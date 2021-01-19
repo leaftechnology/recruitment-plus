@@ -143,3 +143,18 @@ app_license = "MIT"
 #
 # auto_cancel_exempted_doctypes = ["Auto Repeat"]
 
+fixtures = [
+    {
+        "doctype": "Custom Field",
+        "filters": [
+            [
+                "name",
+                "in",
+                [
+                    "Purchase Invoice-reference",
+                    "Sales Invoice-reference",
+                ]
+            ]
+        ]
+    }
+]
