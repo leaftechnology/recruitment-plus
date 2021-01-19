@@ -1,0 +1,294 @@
+{
+ "actions": [],
+ "autoname": "naming_series:",
+ "creation": "2021-01-12 23:37:19.692456",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "status",
+  "own_recruitment",
+  "full_name",
+  "mother",
+  "father",
+  "weight",
+  "height",
+  "age",
+  "phone",
+  "living_town",
+  "date_of_birth",
+  "place_of_birth",
+  "contract_period",
+  "relative_name",
+  "relative_address",
+  "relative_phone",
+  "external_office",
+  "worked_before",
+  "country",
+  "city",
+  "experience_year_count",
+  "column_break_20",
+  "passport_no",
+  "passport_date_of_issue",
+  "passport_date_of_expire",
+  "place_of_issue",
+  "religion",
+  "country_passport",
+  "marital_status",
+  "number_of_children",
+  "customer",
+  "service_type",
+  "work_location",
+  "work_location_eng",
+  "monthly_salary",
+  "description",
+  "other_notes",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "label": "Full Name"
+  },
+  {
+   "fieldname": "mother",
+   "fieldtype": "Data",
+   "label": "Mother"
+  },
+  {
+   "fieldname": "father",
+   "fieldtype": "Data",
+   "label": "Father"
+  },
+  {
+   "fieldname": "weight",
+   "fieldtype": "Data",
+   "label": "Weight"
+  },
+  {
+   "fieldname": "height",
+   "fieldtype": "Data",
+   "label": "Height"
+  },
+  {
+   "fieldname": "age",
+   "fieldtype": "Int",
+   "label": "Age"
+  },
+  {
+   "fieldname": "phone",
+   "fieldtype": "Data",
+   "label": "Phone"
+  },
+  {
+   "fieldname": "living_town",
+   "fieldtype": "Data",
+   "label": "Living Town"
+  },
+  {
+   "fieldname": "date_of_birth",
+   "fieldtype": "Date",
+   "label": "Date of Birth"
+  },
+  {
+   "fieldname": "place_of_birth",
+   "fieldtype": "Data",
+   "label": "Place of Birth"
+  },
+  {
+   "fieldname": "contract_period",
+   "fieldtype": "Data",
+   "label": "Contract Period"
+  },
+  {
+   "fieldname": "relative_name",
+   "fieldtype": "Data",
+   "label": "Relative Name"
+  },
+  {
+   "fieldname": "relative_address",
+   "fieldtype": "Data",
+   "label": "Relative Address"
+  },
+  {
+   "fieldname": "relative_phone",
+   "fieldtype": "Data",
+   "label": "Relative Phone"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "external_office",
+   "fieldtype": "Link",
+   "label": "External Office",
+   "options": "Supplier"
+  },
+  {
+   "default": "0",
+   "fieldname": "worked_before",
+   "fieldtype": "Check",
+   "label": "Worked Before"
+  },
+  {
+   "fieldname": "country",
+   "fieldtype": "Link",
+   "label": "Country",
+   "options": "Country"
+  },
+  {
+   "fieldname": "city",
+   "fieldtype": "Data",
+   "label": "City"
+  },
+  {
+   "fieldname": "experience_year_count",
+   "fieldtype": "Data",
+   "label": "Experience Year Count"
+  },
+  {
+   "fieldname": "column_break_20",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "passport_no",
+   "fieldtype": "Data",
+   "label": "Passport No"
+  },
+  {
+   "fieldname": "passport_date_of_issue",
+   "fieldtype": "Date",
+   "label": "Passport Date of Issue"
+  },
+  {
+   "fieldname": "passport_date_of_expire",
+   "fieldtype": "Date",
+   "label": "Passport Date of Expire"
+  },
+  {
+   "fieldname": "place_of_issue",
+   "fieldtype": "Data",
+   "label": "Place of Issue"
+  },
+  {
+   "fieldname": "religion",
+   "fieldtype": "Link",
+   "label": "Religion",
+   "options": "Religion"
+  },
+  {
+   "fieldname": "country_passport",
+   "fieldtype": "Link",
+   "label": "Country",
+   "options": "Country"
+  },
+  {
+   "fieldname": "marital_status",
+   "fieldtype": "Link",
+   "label": "Marital Status",
+   "options": "Marital Status"
+  },
+  {
+   "fieldname": "number_of_children",
+   "fieldtype": "Data",
+   "label": "Number of Children"
+  },
+  {
+   "fieldname": "service_type",
+   "fieldtype": "Link",
+   "label": "Service Type",
+   "options": "Item"
+  },
+  {
+   "fieldname": "work_location",
+   "fieldtype": "Data",
+   "label": "Work Location"
+  },
+  {
+   "fieldname": "work_location_eng",
+   "fieldtype": "Data",
+   "label": "Work Location Eng"
+  },
+  {
+   "fieldname": "monthly_salary",
+   "fieldtype": "Data",
+   "label": "Monthly Salary"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Data",
+   "label": "Description"
+  },
+  {
+   "fieldname": "other_notes",
+   "fieldtype": "Small Text",
+   "label": "Other Notes"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "CV",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "Available",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Status",
+   "options": "\nAvailable\nIn Progress\nSent to Outside\nTicket\nArravel\nCompleted"
+  },
+  {
+   "allow_on_submit": 1,
+   "depends_on": "eval: doc.docstatus == 1",
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "options": "Customer"
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "0",
+   "fieldname": "own_recruitment",
+   "fieldtype": "Check",
+   "label": "Own Recruitment"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Series",
+   "options": "CV-.YYYY.-"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2021-01-18 16:54:34.023473",
+ "modified_by": "Administrator",
+ "module": "Recruitment Plus",
+ "name": "CV",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

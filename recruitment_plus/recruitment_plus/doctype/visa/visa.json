@@ -1,0 +1,220 @@
+{
+ "actions": [],
+ "autoname": "naming_series:",
+ "creation": "2021-01-13 18:06:16.579581",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "visa_serial",
+  "visa_no",
+  "visa_date",
+  "visa_type",
+  "service",
+  "service_type",
+  "religion",
+  "nationality",
+  "worked_before",
+  "external_office",
+  "external_office_price_by_dollar",
+  "destination",
+  "cost_center",
+  "column_break_14",
+  "from_age",
+  "to_age",
+  "amount_included_vat",
+  "visa_price",
+  "discount",
+  "vias_final",
+  "selected",
+  "desription",
+  "expected_duration_of_arrive",
+  "airport_arrival",
+  "visa_status",
+  "amended_from",
+  "cv"
+ ],
+ "fields": [
+  {
+   "fieldname": "visa_serial",
+   "fieldtype": "Data",
+   "label": "Visa Serial"
+  },
+  {
+   "fieldname": "visa_no",
+   "fieldtype": "Data",
+   "label": "Visa No"
+  },
+  {
+   "fieldname": "visa_date",
+   "fieldtype": "Date",
+   "label": "Visa Date"
+  },
+  {
+   "fieldname": "visa_type",
+   "fieldtype": "Data",
+   "label": "Visa Type"
+  },
+  {
+   "fieldname": "service",
+   "fieldtype": "Data",
+   "label": "Service"
+  },
+  {
+   "fieldname": "service_type",
+   "fieldtype": "Link",
+   "label": "Service Type",
+   "options": "Item"
+  },
+  {
+   "fieldname": "religion",
+   "fieldtype": "Link",
+   "label": "Religion",
+   "options": "Religion"
+  },
+  {
+   "fieldname": "nationality",
+   "fieldtype": "Data",
+   "label": "Nationality"
+  },
+  {
+   "default": "0",
+   "fieldname": "worked_before",
+   "fieldtype": "Check",
+   "label": "Worked Before"
+  },
+  {
+   "fieldname": "external_office",
+   "fieldtype": "Link",
+   "label": "External Office",
+   "options": "Supplier"
+  },
+  {
+   "fieldname": "external_office_price_by_dollar",
+   "fieldtype": "Currency",
+   "label": "External Office Price By Dollar"
+  },
+  {
+   "fieldname": "destination",
+   "fieldtype": "Data",
+   "label": "Destination"
+  },
+  {
+   "fieldname": "cost_center",
+   "fieldtype": "Link",
+   "label": "Cost Center",
+   "options": "Cost Center"
+  },
+  {
+   "fieldname": "column_break_14",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "from_age",
+   "fieldtype": "Int",
+   "label": "From Age"
+  },
+  {
+   "fieldname": "to_age",
+   "fieldtype": "Int",
+   "label": "To Age"
+  },
+  {
+   "default": "0",
+   "fieldname": "amount_included_vat",
+   "fieldtype": "Check",
+   "label": "Amount Included VAT"
+  },
+  {
+   "fieldname": "visa_price",
+   "fieldtype": "Currency",
+   "label": "Visa Price"
+  },
+  {
+   "fieldname": "discount",
+   "fieldtype": "Currency",
+   "label": "Discount"
+  },
+  {
+   "fieldname": "vias_final",
+   "fieldtype": "Currency",
+   "label": "Vias Final"
+  },
+  {
+   "default": "0",
+   "fieldname": "selected",
+   "fieldtype": "Check",
+   "label": "Selected"
+  },
+  {
+   "fieldname": "desription",
+   "fieldtype": "Data",
+   "label": "Desription"
+  },
+  {
+   "fieldname": "expected_duration_of_arrive",
+   "fieldtype": "Data",
+   "label": "Expected Duration Of Arrive"
+  },
+  {
+   "fieldname": "airport_arrival",
+   "fieldtype": "Data",
+   "label": "Airport Arrival"
+  },
+  {
+   "fieldname": "visa_status",
+   "fieldtype": "Data",
+   "label": "Visa Status"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Visa",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "cv",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "CV",
+   "options": "CV"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Series",
+   "options": "VISA-.YYYY.-"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2021-01-18 16:49:09.960496",
+ "modified_by": "Administrator",
+ "module": "Recruitment Plus",
+ "name": "Visa",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}
