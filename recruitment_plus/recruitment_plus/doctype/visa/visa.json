@@ -33,7 +33,9 @@
   "airport_arrival",
   "visa_status",
   "amended_from",
-  "cv"
+  "cv",
+  "sales_invoice",
+  "purchase_invoice"
  ],
  "fields": [
   {
@@ -179,9 +181,9 @@
   {
    "fieldname": "cv",
    "fieldtype": "Link",
-   "hidden": 1,
    "label": "CV",
-   "options": "CV"
+   "options": "CV",
+   "read_only": 1
   },
   {
    "fieldname": "naming_series",
@@ -189,12 +191,24 @@
    "hidden": 1,
    "label": "Series",
    "options": "VISA-.YYYY.-"
+  },
+  {
+   "fieldname": "sales_invoice",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Sales Invoice"
+  },
+  {
+   "fieldname": "purchase_invoice",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Purchase Invoice"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2021-01-18 16:49:09.960496",
+ "modified": "2021-01-23 13:14:33.059192",
  "modified_by": "Administrator",
  "module": "Recruitment Plus",
  "name": "Visa",

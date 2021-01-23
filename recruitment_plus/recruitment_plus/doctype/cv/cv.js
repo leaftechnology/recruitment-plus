@@ -3,14 +3,28 @@
 cur_frm.cscript.external_office = function () {
     if(cur_frm.doc.external_office){
         cur_frm.set_df_property("customer", "read_only", 1)
+        cur_frm.set_df_property("recruitment_request", "read_only", 1)
+        cur_frm.set_df_property("own_recruitment", "read_only", 1)
     } else {
         cur_frm.set_df_property("customer", "read_only", 0)
+        cur_frm.set_df_property("recruitment_request", "read_only", 0)
+        cur_frm.set_df_property("own_recruitment", "read_only", 0)
     }
 }
 var submitted_visa = false
 var existing_visa = false
+var existing_si = false
+var existing_pi = false
 var existing_ = false
-cur_frm.cscript.setup = function () {
+var existing_rental = false
+
+cur_frm.cscript.refresh = function () {
+    if(!cur_frm.is_new()) {
+        document.querySelectorAll("[data-doctype='Visa']")[1].style.display = "none";
+        document.querySelectorAll("[data-doctype='Rental']")[1].style.display = "none";
+        // document.querySelectorAll("[data-doctype='Stock Entry']")[1].style.display = "none";
+        // document.querySelectorAll("[data-doctype='Job Completion Report']")[1].style.display = "none";
+    }
     frappe.call({
         method: "recruitment_plus.recruitment_plus.doctype.cv.cv.get_submitted_visa",
         args: {
@@ -20,11 +34,20 @@ cur_frm.cscript.setup = function () {
         callback: function (r) {
             submitted_visa = r.message[0]
             existing_visa = r.message[1]
+            existing_si = r.message[2]
+            existing_pi = r.message[3]
+            existing_rental = r.message[4]
         }
     })
-}
-cur_frm.cscript.refresh = function () {
-
+ cur_frm.set_query('recruitment_request', () => {
+            return {
+                filters: [
+                        ["customer", "=", cur_frm.doc.customer],
+                        ["status", "=", "Open"],
+                        ["docstatus", "=", 1],
+                    ]
+            }
+        })
     if(cur_frm.doc.external_office){
         cur_frm.set_df_property("customer", "read_only", 1)
     } else {
@@ -36,6 +59,7 @@ cur_frm.cscript.refresh = function () {
                 cur_frm.set_df_property("external_office", "read_only", 1)
 
     }
+
     if(cur_frm.doc.status === "In Progress" && !existing_visa){
        cur_frm.add_custom_button(__("Generate Visa"), () => {
                     cur_frm.call({
@@ -44,11 +68,14 @@ cur_frm.cscript.refresh = function () {
                         args: {},
                         freeze: true,
                         freeze_message: "Generating Visa...",
-                        callback: () => {}
+                        callback: (rr) => {
+
+                                    frappe.set_route("Form", "Visa", rr.message);
+                        }
                     })
             })
     }
-    if(cur_frm.doc.status === "In Progress" && cur_frm.doc.own_recruitment){
+    if(cur_frm.doc.status === "In Progress" && cur_frm.doc.own_recruitment && !existing_rental){
        cur_frm.add_custom_button(__("Generate Rental"), () => {
                     cur_frm.call({
                         doc: cur_frm.doc,
@@ -56,23 +83,28 @@ cur_frm.cscript.refresh = function () {
                         args: {},
                         freeze: true,
                         freeze_message: "Generating Rental...",
-                        callback: () => {}
+                        callback: (rr) => {
+                                frappe.set_route("Form", "Rental", rr.message);
+                             }
                     })
             })
     }
-     if(submitted_visa){
+     if(submitted_visa && !existing_si){
        cur_frm.add_custom_button(__("Generate Sales Invoice"), () => {
                     cur_frm.call({
                         doc: cur_frm.doc,
                         method: 'generate_si',
                         args: {},
                         freeze: true,
-                        freeze_message: "Generating Visa...",
-                        callback: () => {}
+                        freeze_message: "Generating Sales Invoice...",
+                        callback: (rr) => {
+                                    frappe.set_route("Form", "Sales Invoice", rr.message);
+
+           }
                     })
             })
     }
-    if(cur_frm.doc.external_office && cur_frm.doc.status === "Sent to Outside"){
+    if(cur_frm.doc.external_office && cur_frm.doc.status === "Sent to Outside" && !existing_pi){
        cur_frm.add_custom_button(__("Generate Purchase Invoice"), () => {
                     cur_frm.call({
                         doc: cur_frm.doc,
@@ -80,7 +112,10 @@ cur_frm.cscript.refresh = function () {
                         args: {},
                         freeze: true,
                         freeze_message: "Generating Purchase Invoice...",
-                        callback: () => {}
+                        callback: (rr) => {
+                                    frappe.set_route("Form", "Purchase Invoice", rr.message);
+
+           }
                     })
             })
     }

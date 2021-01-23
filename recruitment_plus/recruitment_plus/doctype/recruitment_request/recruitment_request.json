@@ -6,12 +6,19 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "status",
+  "previous_status",
   "naming_series",
   "name1",
+  "customer",
+  "customer_name",
+  "column_break_6",
   "telephone",
   "email",
   "requested_country",
+  "section_break_10",
   "request_content",
+  "cv",
   "amended_from"
  ],
  "fields": [
@@ -58,12 +65,54 @@
    "hidden": 1,
    "label": "Series",
    "options": "RR-.YYYY.-"
+  },
+  {
+   "default": "Open",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Status",
+   "options": "Open\nIn Progress\nCompleted\nClosed"
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "options": "Customer",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "customer.customer_name",
+   "fieldname": "customer_name",
+   "fieldtype": "Data",
+   "label": "Customer Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_6",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_10",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "cv",
+   "fieldtype": "Data",
+   "label": "CV",
+   "read_only": 1
+  },
+  {
+   "fieldname": "previous_status",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Previous Status"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2021-01-18 16:54:17.225573",
+ "modified": "2021-01-23 13:20:56.572341",
  "modified_by": "Administrator",
  "module": "Recruitment Plus",
  "name": "Recruitment Request",
@@ -82,7 +131,6 @@
    "write": 1
   }
  ],
- "quick_entry": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
  "track_changes": 1

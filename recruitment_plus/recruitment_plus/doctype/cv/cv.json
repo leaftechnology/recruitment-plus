@@ -38,6 +38,8 @@
   "marital_status",
   "number_of_children",
   "customer",
+  "customer_name",
+  "recruitment_request",
   "service_type",
   "work_location",
   "work_location_eng",
@@ -196,8 +198,10 @@
   {
    "fieldname": "service_type",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Service Type",
-   "options": "Item"
+   "options": "Item",
+   "reqd": 1
   },
   {
    "fieldname": "work_location",
@@ -253,6 +257,7 @@
   {
    "allow_on_submit": 1,
    "default": "0",
+   "depends_on": "eval: doc.customer",
    "fieldname": "own_recruitment",
    "fieldtype": "Check",
    "label": "Own Recruitment"
@@ -263,12 +268,27 @@
    "hidden": 1,
    "label": "Series",
    "options": "CV-.YYYY.-"
+  },
+  {
+   "allow_on_submit": 1,
+   "fetch_from": "customer.customer_name",
+   "fieldname": "customer_name",
+   "fieldtype": "Data",
+   "label": "Customer Name",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "recruitment_request",
+   "fieldtype": "Link",
+   "label": "Recruitment Request",
+   "options": "Recruitment Request"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2021-01-18 16:54:34.023473",
+ "modified": "2021-01-22 00:06:56.850186",
  "modified_by": "Administrator",
  "module": "Recruitment Plus",
  "name": "CV",
@@ -287,7 +307,6 @@
    "write": 1
   }
  ],
- "quick_entry": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
  "track_changes": 1

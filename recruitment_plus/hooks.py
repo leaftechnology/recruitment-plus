@@ -91,13 +91,12 @@ app_license = "MIT"
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
-# 	"*": {
-# 		"on_update": "method",
-# 		"on_cancel": "method",
-# 		"on_trash": "method"
-#	}
-# }
+doc_events = {
+	"Sales Invoice": {
+		"on_submit": "recruitment_plus.doc_events.sales_invoice.submit_si",
+		"on_cancel": "recruitment_plus.doc_events.sales_invoice.cancel_si",
+	}
+}
 
 # Scheduled Tasks
 # ---------------

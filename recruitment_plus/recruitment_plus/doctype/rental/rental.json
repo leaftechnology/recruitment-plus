@@ -17,6 +17,7 @@
   "quantity",
   "unit_price",
   "cv",
+  "sales_invoice",
   "amended_from"
  ],
  "fields": [
@@ -72,18 +73,19 @@
    "read_only": 1
   },
   {
+   "default": "Confirmed",
    "fieldname": "status",
    "fieldtype": "Select",
    "hidden": 1,
    "label": "Status",
-   "options": "\nConfirmed\nPending\nPick Up Completed"
+   "options": "\nConfirmed\nTo Pick Up\nTo Return\nCompleted"
   },
   {
    "fieldname": "cv",
    "fieldtype": "Link",
-   "hidden": 1,
    "label": "CV",
-   "options": "CV"
+   "options": "CV",
+   "read_only": 1
   },
   {
    "fieldname": "naming_series",
@@ -91,12 +93,19 @@
    "hidden": 1,
    "label": "Series",
    "options": "RN-.YYYY.-"
+  },
+  {
+   "fieldname": "sales_invoice",
+   "fieldtype": "Link",
+   "label": "Sales Invoice",
+   "options": "Sales Invoice",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2021-01-18 16:54:26.087950",
+ "modified": "2021-01-23 13:03:45.641191",
  "modified_by": "Administrator",
  "module": "Recruitment Plus",
  "name": "Rental",
