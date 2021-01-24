@@ -37,10 +37,12 @@
   "country_passport",
   "marital_status",
   "number_of_children",
+  "cv_for_recruitment_request",
   "customer",
   "customer_name",
   "recruitment_request",
   "service_type",
+  "item_name",
   "work_location",
   "work_location_eng",
   "monthly_salary",
@@ -248,7 +250,7 @@
   },
   {
    "allow_on_submit": 1,
-   "depends_on": "eval: doc.docstatus == 1",
+   "depends_on": "eval: doc.docstatus == 1 && doc.cv_for_recruitment_request == 0",
    "fieldname": "customer",
    "fieldtype": "Link",
    "label": "Customer",
@@ -257,7 +259,7 @@
   {
    "allow_on_submit": 1,
    "default": "0",
-   "depends_on": "eval: doc.customer",
+   "depends_on": "eval: doc.customer || doc.recruitment_request",
    "fieldname": "own_recruitment",
    "fieldtype": "Check",
    "label": "Own Recruitment"
@@ -279,16 +281,34 @@
   },
   {
    "allow_on_submit": 1,
+   "depends_on": "eval: doc.docstatus == 1 && doc.cv_for_recruitment_request == 1",
    "fieldname": "recruitment_request",
    "fieldtype": "Link",
    "label": "Recruitment Request",
+   "mandatory_depends_on": "eval: doc.cv_for_recruitment_request == 1",
    "options": "Recruitment Request"
+  },
+  {
+   "fetch_from": "service_type.item_name",
+   "fieldname": "item_name",
+   "fieldtype": "Data",
+   "label": "Item Name",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "0",
+   "depends_on": "eval: doc.docstatus == 1",
+   "fieldname": "cv_for_recruitment_request",
+   "fieldtype": "Check",
+   "label": "CV for Recruitment Request",
+   "read_only_depends_on": "eval: doc.customer || doc.recruitment_request"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2021-01-22 00:06:56.850186",
+ "modified": "2021-01-24 19:49:43.545850",
  "modified_by": "Administrator",
  "module": "Recruitment Plus",
  "name": "CV",

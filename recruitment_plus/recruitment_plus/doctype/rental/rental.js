@@ -38,3 +38,4 @@ frappe.ui.form.on('Rental', {
         }
 	}
 });
+

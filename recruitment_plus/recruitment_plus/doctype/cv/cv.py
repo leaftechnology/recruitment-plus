@@ -10,12 +10,12 @@ class CV(Document):
 	def on_update_after_submit(self):
 		print("NAA MAN")
 		# self.change_status("In Progress" if self.customer else "Available")
-		self.change_status("Sent to Outside" if self.external_office and self.customer else "In Progress" if self.customer and not self.external_office else "Available")
-		if self.recruitment_request:
+		self.change_status("Sent to Outside" if self.external_office and (self.customer or self.cv_for_recruitment_request) else "In Progress" if (self.customer or self.cv_for_recruitment_request) and not self.external_office else "Available")
+		if self.cv_for_recruitment_request and self.recruitment_request:
 			frappe.db.sql(""" UPDATE `tabRecruitment Request` SET cv=%s, status='In Progress' WHERE name=%s""", (self.name, self.recruitment_request))
 			frappe.db.commit()
 
-		elif not self.recruitment_request:
+		elif not self.cv_for_recruitment_request and not self.recruitment_request:
 			frappe.db.sql(""" UPDATE `tabRecruitment Request` SET cv=%s, status='Open' WHERE cv=%s""",
 						  ("", self.name))
 			frappe.db.commit()
@@ -49,7 +49,8 @@ class CV(Document):
 	def generate_rental(self):
 		obj = {
 			"doctype": "Rental",
-			"customer": self.customer,
+			"customer": frappe.db.get_value("Recruitment Request", self.recruitment_request, "customer") if self.cv_for_recruitment_request else self.customer,
+			"customer_name": frappe.db.get_value("Recruitment Request", self.cv_for_recruitment_request, "customer_name") if self.cv_for_recruitment_request else self.customer,
 			"cv": self.name,
 		}
 		rental = frappe.get_doc(obj).insert()

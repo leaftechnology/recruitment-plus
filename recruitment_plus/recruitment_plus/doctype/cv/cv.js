@@ -1,5 +1,11 @@
 
 
+cur_frm.cscript.customer = function () {
+    if(!cur_frm.doc.customer){
+        cur_frm.doc.customer_name = ""
+        cur_frm.refresh_field("customer_name")
+    }
+}
 cur_frm.cscript.external_office = function () {
     if(cur_frm.doc.external_office){
         cur_frm.set_df_property("customer", "read_only", 1)
@@ -42,7 +48,6 @@ cur_frm.cscript.refresh = function () {
  cur_frm.set_query('recruitment_request', () => {
             return {
                 filters: [
-                        ["customer", "=", cur_frm.doc.customer],
                         ["status", "=", "Open"],
                         ["docstatus", "=", 1],
                     ]

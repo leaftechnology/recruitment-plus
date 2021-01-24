@@ -9,7 +9,6 @@
   "status",
   "previous_status",
   "naming_series",
-  "name1",
   "customer",
   "customer_name",
   "column_break_6",
@@ -22,13 +21,6 @@
   "amended_from"
  ],
  "fields": [
-  {
-   "fieldname": "name1",
-   "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "Name",
-   "reqd": 1
-  },
   {
    "fieldname": "telephone",
    "fieldtype": "Data",
@@ -77,6 +69,7 @@
   {
    "fieldname": "customer",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Customer",
    "options": "Customer",
    "reqd": 1
@@ -112,7 +105,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2021-01-23 13:20:56.572341",
+ "modified": "2021-01-23 17:58:06.181140",
  "modified_by": "Administrator",
  "module": "Recruitment Plus",
  "name": "Recruitment Request",

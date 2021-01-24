@@ -9,6 +9,7 @@
   "naming_series",
   "status",
   "customer",
+  "customer_name",
   "expiration",
   "payment_terms",
   "from_date",
@@ -100,12 +101,19 @@
    "label": "Sales Invoice",
    "options": "Sales Invoice",
    "read_only": 1
+  },
+  {
+   "fetch_from": "customer.customer_name",
+   "fieldname": "customer_name",
+   "fieldtype": "Data",
+   "label": "Customer Name",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2021-01-23 13:03:45.641191",
+ "modified": "2021-01-24 19:42:09.152587",
  "modified_by": "Administrator",
  "module": "Recruitment Plus",
  "name": "Rental",
