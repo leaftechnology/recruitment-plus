@@ -1,11 +1,32 @@
 
 
 cur_frm.cscript.customer = function () {
-    if(!cur_frm.doc.customer){
+    if(cur_frm.doc.customer){
+        frappe.db.get_doc('Customer', cur_frm.doc.customer)
+            .then(customer => {
+                cur_frm.doc.customer_name = customer.customer_name
+                cur_frm.refresh_field("customer_name")
+            })
+
+    } else {
         cur_frm.doc.customer_name = ""
         cur_frm.refresh_field("customer_name")
     }
 }
+cur_frm.cscript.recruitment_request = function () {
+    if(cur_frm.doc.recruitment_request){
+        frappe.db.get_doc('Recruitment Request', cur_frm.doc.recruitment_request)
+            .then(customer => {
+                cur_frm.doc.customer_name = customer.customer_name
+                cur_frm.refresh_field("customer_name")
+            })
+
+    } else {
+        cur_frm.doc.customer_name = ""
+        cur_frm.refresh_field("customer_name")
+    }
+}
+
 cur_frm.cscript.external_office = function () {
     if(cur_frm.doc.external_office){
         cur_frm.set_df_property("customer", "read_only", 1)
@@ -28,6 +49,7 @@ cur_frm.cscript.refresh = function () {
     if(!cur_frm.is_new()) {
         document.querySelectorAll("[data-doctype='Visa']")[1].style.display = "none";
         document.querySelectorAll("[data-doctype='Rental']")[1].style.display = "none";
+        document.querySelectorAll("[data-doctype='Recruitment Request']")[1].style.display = "none";
         // document.querySelectorAll("[data-doctype='Stock Entry']")[1].style.display = "none";
         // document.querySelectorAll("[data-doctype='Job Completion Report']")[1].style.display = "none";
     }
@@ -58,11 +80,16 @@ cur_frm.cscript.refresh = function () {
     } else {
         cur_frm.set_df_property("customer", "read_only", 0)
     }
-    if(cur_frm.doc.customer){
+    if(cur_frm.doc.customer || cur_frm.doc.recruitment_request){
         cur_frm.set_df_property("external_office", "read_only", 0)
     } else {
                 cur_frm.set_df_property("external_office", "read_only", 1)
 
+    }
+    if(existing_rental){
+        cur_frm.set_df_property("own_recruitment", "read_only", 1)
+    } else {
+        cur_frm.set_df_property("external_office", "read_only", 0)
     }
 
     if(cur_frm.doc.status === "In Progress" && !existing_visa){

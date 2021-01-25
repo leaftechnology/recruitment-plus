@@ -5,20 +5,13 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "visa_reference",
+  "rental_reference",
   "from_date",
   "to_date",
   "qty",
   "amount"
  ],
  "fields": [
-  {
-   "fieldname": "visa_reference",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "label": "Rental Reference",
-   "options": "Rental"
-  },
   {
    "default": "Today",
    "fieldname": "from_date",
@@ -45,12 +38,19 @@
    "fieldtype": "Currency",
    "in_list_view": 1,
    "label": "Amount"
+  },
+  {
+   "fieldname": "rental_reference",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Rental Reference",
+   "options": "Rental"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2021-01-23 12:33:50.867854",
+ "modified": "2021-01-25 19:48:11.540251",
  "modified_by": "Administrator",
  "module": "Recruitment Plus",
  "name": "Rental Reference",

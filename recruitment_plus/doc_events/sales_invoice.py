@@ -3,7 +3,7 @@ import frappe
 def submit_si(doc, method):
 
     for i in doc.rental:
-        frappe.db.sql(""" UPDATE `tabRental` SET status='To Pick Up' WHERE name=%s""", i.visa_reference)
+        frappe.db.sql(""" UPDATE `tabRental` SET status='To Pick Up' WHERE name=%s""", i.rental_reference)
         frappe.db.commit()
 
 def cancel_si(doc, method):

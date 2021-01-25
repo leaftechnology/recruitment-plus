@@ -25,9 +25,6 @@ class Rental(Document):
 		rental_return = frappe.get_doc(obj).insert()
 		return rental_return.name
 
-	def on_submit(self):
-		self.generate_si()
-
 	def generate_si(self):
 		obj = {
 			"doctype": "Sales Invoice",
@@ -38,10 +35,10 @@ class Rental(Document):
 		si = frappe.get_doc(obj).insert()
 		frappe.db.sql(""" UPDATE `tabRental` SET sales_invoice=%s WHERE name=%s """, (si.name, self.name))
 		frappe.db.commit()
-		self.reload()
+		return si.name
 	def get_rental_reference(self):
 		return [{
-			"visa_reference": self.name,
+			"rental_reference": self.name,
 			"from_date": self.from_date,
 			"to_date": self.to_date,
 			"qty": self.quantity,
