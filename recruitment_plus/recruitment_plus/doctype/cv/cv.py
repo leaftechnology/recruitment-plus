@@ -104,7 +104,7 @@ class CV(Document):
 		if len(item_price) > 0:
 			return item_price[0].price_list_rate
 		else:
-			frappe.throw("Please set selling rate for item " + str(self.service_type))
+			frappe.throw("Please set " + "selling" if doctype == "Sales" else "buying" + " rate for item " + str(self.service_type))
 @frappe.whitelist()
 def get_submitted_visa(name):
 	visa = frappe.db.sql(""" SELECT * FROM `tabVisa` WHERE cv=%s """, name, as_dict=1)

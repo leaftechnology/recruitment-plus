@@ -22,7 +22,7 @@ frappe.ui.form.on('Rental', {
         if(cur_frm.doc.status === "To Pick Up"){
 
         } else if(cur_frm.doc.status === "To Return"){
-            cur_frm.add_custom_button(__("Generate Rental Return"), () => {
+            cur_frm.add_custom_button(__("Rental Return"), () => {
                     cur_frm.call({
                         doc: cur_frm.doc,
                         method: 'generate_rental_return',

@@ -93,7 +93,7 @@ cur_frm.cscript.refresh = function () {
     }
 
     if(cur_frm.doc.status === "In Progress" && !existing_visa){
-       cur_frm.add_custom_button(__("Generate Visa"), () => {
+       cur_frm.add_custom_button(__("Visa"), () => {
                     cur_frm.call({
                         doc: cur_frm.doc,
                         method: 'generate_visa',
@@ -108,7 +108,7 @@ cur_frm.cscript.refresh = function () {
             })
     }
     if(cur_frm.doc.status === "In Progress" && cur_frm.doc.own_recruitment && !existing_rental){
-       cur_frm.add_custom_button(__("Generate Rental"), () => {
+       cur_frm.add_custom_button(__("Rental"), () => {
                     cur_frm.call({
                         doc: cur_frm.doc,
                         method: 'generate_rental',
@@ -122,7 +122,7 @@ cur_frm.cscript.refresh = function () {
             })
     }
      if(submitted_visa && !existing_si){
-       cur_frm.add_custom_button(__("Generate Sales Invoice"), () => {
+       cur_frm.add_custom_button(__("Sales Invoice"), () => {
                     cur_frm.call({
                         doc: cur_frm.doc,
                         method: 'generate_si',
@@ -137,7 +137,7 @@ cur_frm.cscript.refresh = function () {
             })
     }
     if(cur_frm.doc.external_office && cur_frm.doc.status === "Sent to Outside" && !existing_pi){
-       cur_frm.add_custom_button(__("Generate Purchase Invoice"), () => {
+       cur_frm.add_custom_button(__("Purchase Invoice"), () => {
                     cur_frm.call({
                         doc: cur_frm.doc,
                         method: 'generate_pi',

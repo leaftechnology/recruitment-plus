@@ -24,7 +24,6 @@
   "relative_name",
   "relative_address",
   "relative_phone",
-  "external_office",
   "worked_before",
   "country",
   "city",
@@ -44,6 +43,7 @@
   "recruitment_request",
   "customer_name",
   "own_recruitment",
+  "external_office",
   "service_type",
   "item_name",
   "work_location",
@@ -199,8 +199,9 @@
   },
   {
    "fieldname": "number_of_children",
-   "fieldtype": "Data",
-   "label": "Number of Children"
+   "fieldtype": "Select",
+   "label": "Number of Children",
+   "options": "\n1\n2\n3\n4\n5\n6\n7"
   },
   {
    "fieldname": "service_type",
@@ -325,7 +326,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2021-01-25 22:35:53.247902",
+ "modified": "2021-01-26 22:57:11.330352",
  "modified_by": "Administrator",
  "module": "Recruitment Plus",
  "name": "CV",
