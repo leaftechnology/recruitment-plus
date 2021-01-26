@@ -13,12 +13,12 @@
   "visa_type",
   "service",
   "service_type",
+  "item_name",
   "religion",
   "nationality",
   "worked_before",
   "external_office",
   "external_office_price_by_dollar",
-  "destination",
   "cost_center",
   "column_break_14",
   "from_age",
@@ -30,6 +30,7 @@
   "selected",
   "desription",
   "expected_duration_of_arrive",
+  "destination",
   "airport_arrival",
   "visa_status",
   "amended_from",
@@ -41,17 +42,23 @@
   {
    "fieldname": "visa_serial",
    "fieldtype": "Data",
-   "label": "Visa Serial"
+   "in_list_view": 1,
+   "label": "Visa Serial",
+   "reqd": 1
   },
   {
    "fieldname": "visa_no",
    "fieldtype": "Data",
-   "label": "Visa No"
+   "in_list_view": 1,
+   "label": "Visa No",
+   "reqd": 1
   },
   {
    "fieldname": "visa_date",
    "fieldtype": "Date",
-   "label": "Visa Date"
+   "in_list_view": 1,
+   "label": "Visa Date",
+   "reqd": 1
   },
   {
    "fieldname": "visa_type",
@@ -77,8 +84,10 @@
   },
   {
    "fieldname": "nationality",
-   "fieldtype": "Data",
-   "label": "Nationality"
+   "fieldtype": "Link",
+   "label": "Nationality",
+   "options": "Country",
+   "reqd": 1
   },
   {
    "default": "0",
@@ -100,13 +109,14 @@
   {
    "fieldname": "destination",
    "fieldtype": "Data",
-   "label": "Destination"
+   "label": "Destination Airport"
   },
   {
    "fieldname": "cost_center",
    "fieldtype": "Link",
    "label": "Cost Center",
-   "options": "Cost Center"
+   "options": "Cost Center",
+   "reqd": 1
   },
   {
    "fieldname": "column_break_14",
@@ -131,7 +141,9 @@
   {
    "fieldname": "visa_price",
    "fieldtype": "Currency",
-   "label": "Visa Price"
+   "in_list_view": 1,
+   "label": "Visa Price",
+   "reqd": 1
   },
   {
    "fieldname": "discount",
@@ -166,8 +178,9 @@
   },
   {
    "fieldname": "visa_status",
-   "fieldtype": "Data",
-   "label": "Visa Status"
+   "fieldtype": "Select",
+   "label": "Visa Status",
+   "options": "\nAvailable\nUsed\nNot available"
   },
   {
    "fieldname": "amended_from",
@@ -203,12 +216,19 @@
    "fieldtype": "Data",
    "hidden": 1,
    "label": "Purchase Invoice"
+  },
+  {
+   "fetch_from": "service_type.item_name",
+   "fieldname": "item_name",
+   "fieldtype": "Data",
+   "label": "Item Name",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2021-01-23 13:14:33.059192",
+ "modified": "2021-01-26 17:56:04.036823",
  "modified_by": "Administrator",
  "module": "Recruitment Plus",
  "name": "Visa",
