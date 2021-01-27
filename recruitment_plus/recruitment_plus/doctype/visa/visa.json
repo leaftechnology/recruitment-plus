@@ -43,22 +43,19 @@
    "fieldname": "visa_serial",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Visa Serial",
-   "reqd": 1
+   "label": "Visa Serial"
   },
   {
    "fieldname": "visa_no",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Visa No",
-   "reqd": 1
+   "label": "Visa No"
   },
   {
    "fieldname": "visa_date",
    "fieldtype": "Date",
    "in_list_view": 1,
-   "label": "Visa Date",
-   "reqd": 1
+   "label": "Visa Date"
   },
   {
    "fieldname": "visa_type",
@@ -86,8 +83,7 @@
    "fieldname": "nationality",
    "fieldtype": "Link",
    "label": "Nationality",
-   "options": "Country",
-   "reqd": 1
+   "options": "Country"
   },
   {
    "default": "0",
@@ -115,8 +111,7 @@
    "fieldname": "cost_center",
    "fieldtype": "Link",
    "label": "Cost Center",
-   "options": "Cost Center",
-   "reqd": 1
+   "options": "Cost Center"
   },
   {
    "fieldname": "column_break_14",
@@ -142,8 +137,7 @@
    "fieldname": "visa_price",
    "fieldtype": "Currency",
    "in_list_view": 1,
-   "label": "Visa Price",
-   "reqd": 1
+   "label": "Visa Price"
   },
   {
    "fieldname": "discount",
@@ -228,7 +222,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2021-01-26 17:56:04.036823",
+ "modified": "2021-01-27 22:42:41.572455",
  "modified_by": "Administrator",
  "module": "Recruitment Plus",
  "name": "Visa",
