@@ -46,6 +46,88 @@ var existing_ = false
 var existing_rental = false
 
 cur_frm.cscript.refresh = function () {
+    $.getScript("https://cdn.jsdelivr.net/npm/places.js@1.19.0", function () {
+          var placesAutocomplete = places({
+            appId: 'plBBA3S4UJ7B',
+            apiKey: '0862ae80a132be1181fac98cf20ecfac',
+            container: cur_frm.fields_dict.city.input
+          });
+
+          var $address = cur_frm.fields_dict.city.input
+          placesAutocomplete.on('change', function(e) {
+            $address.textContent = e.suggestion.value
+          });
+
+          placesAutocomplete.on('clear', function() {
+            $address.textContent = 'none';
+          });
+        })
+
+        $.getScript("https://cdn.jsdelivr.net/npm/places.js@1.19.0", function () {
+          var placesAutocomplete = places({
+            appId: 'plBBA3S4UJ7B',
+            apiKey: '0862ae80a132be1181fac98cf20ecfac',
+            container: cur_frm.fields_dict.place_of_birth.input
+          });
+
+          var $address = cur_frm.fields_dict.place_of_birth.input
+          placesAutocomplete.on('change', function(e) {
+            $address.textContent = e.suggestion.value
+          });
+
+          placesAutocomplete.on('clear', function() {
+            $address.textContent = 'none';
+          });
+        })
+        $.getScript("https://cdn.jsdelivr.net/npm/places.js@1.19.0", function () {
+          var placesAutocomplete = places({
+            appId: 'plBBA3S4UJ7B',
+            apiKey: '0862ae80a132be1181fac98cf20ecfac',
+            container: cur_frm.fields_dict.living_town.input
+          });
+
+          var $address = cur_frm.fields_dict.living_town.input
+          placesAutocomplete.on('change', function(e) {
+            $address.textContent = e.suggestion.value
+          });
+
+          placesAutocomplete.on('clear', function() {
+            $address.textContent = 'none';
+          });
+        })
+    $.getScript("https://cdn.jsdelivr.net/npm/places.js@1.19.0", function () {
+          var placesAutocomplete = places({
+            appId: 'plBBA3S4UJ7B',
+            apiKey: '0862ae80a132be1181fac98cf20ecfac',
+            container: cur_frm.fields_dict.work_location.input
+          });
+
+          var $address = cur_frm.fields_dict.work_location.input
+          placesAutocomplete.on('change', function(e) {
+            $address.textContent = e.suggestion.value
+          });
+
+          placesAutocomplete.on('clear', function() {
+            $address.textContent = 'none';
+          });
+        })
+    $.getScript("https://cdn.jsdelivr.net/npm/places.js@1.19.0", function () {
+          var placesAutocomplete = places({
+            appId: 'plBBA3S4UJ7B',
+            apiKey: '0862ae80a132be1181fac98cf20ecfac',
+            container: cur_frm.fields_dict.place_of_issue.input
+          });
+
+          var $address = cur_frm.fields_dict.place_of_issue.input
+          placesAutocomplete.on('change', function(e) {
+            $address.textContent = e.suggestion.value
+          });
+
+          placesAutocomplete.on('clear', function() {
+            $address.textContent = 'none';
+          });
+        })
+
     if(!cur_frm.is_new()) {
         document.querySelectorAll("[data-doctype='Visa']")[1].style.display = "none";
         document.querySelectorAll("[data-doctype='Rental']")[1].style.display = "none";
@@ -92,7 +174,7 @@ cur_frm.cscript.refresh = function () {
         cur_frm.set_df_property("external_office", "read_only", 0)
     }
 
-    if(cur_frm.doc.status === "In Progress" && !existing_visa){
+    if(["In Progress", "Sent to Outside"].includes(cur_frm.doc.status) && !existing_visa){
        cur_frm.add_custom_button(__("Visa"), () => {
                     cur_frm.call({
                         doc: cur_frm.doc,

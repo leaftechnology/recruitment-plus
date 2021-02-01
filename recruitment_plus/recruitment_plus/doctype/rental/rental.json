@@ -10,14 +10,11 @@
   "status",
   "customer",
   "customer_name",
-  "expiration",
-  "payment_terms",
   "from_date",
   "to_date",
-  "duration",
-  "quantity",
   "unit_price",
   "cv",
+  "terms_and_conditions",
   "sales_invoice",
   "amended_from"
  ],
@@ -29,17 +26,6 @@
    "options": "Customer"
   },
   {
-   "fieldname": "expiration",
-   "fieldtype": "Date",
-   "label": "Expiration"
-  },
-  {
-   "fieldname": "payment_terms",
-   "fieldtype": "Link",
-   "label": "Payment Terms",
-   "options": "Payment Term"
-  },
-  {
    "fieldname": "from_date",
    "fieldtype": "Date",
    "label": "From Date"
@@ -48,16 +34,6 @@
    "fieldname": "to_date",
    "fieldtype": "Date",
    "label": "To Date"
-  },
-  {
-   "fieldname": "duration",
-   "fieldtype": "Data",
-   "label": "Duration"
-  },
-  {
-   "fieldname": "quantity",
-   "fieldtype": "Float",
-   "label": "Quantity"
   },
   {
    "fieldname": "unit_price",
@@ -108,12 +84,18 @@
    "fieldtype": "Data",
    "label": "Customer Name",
    "read_only": 1
+  },
+  {
+   "fieldname": "terms_and_conditions",
+   "fieldtype": "Link",
+   "label": "Terms and Conditions",
+   "options": "Terms and Conditions"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2021-01-24 19:42:09.152587",
+ "modified": "2021-02-01 23:19:42.647705",
  "modified_by": "Administrator",
  "module": "Recruitment Plus",
  "name": "Rental",

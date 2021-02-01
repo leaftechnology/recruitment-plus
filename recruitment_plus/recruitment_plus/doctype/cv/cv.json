@@ -19,11 +19,9 @@
   "living_town",
   "date_of_birth",
   "place_of_birth",
+  "nationality",
   "column_break_13",
   "contract_period",
-  "relative_name",
-  "relative_address",
-  "relative_phone",
   "worked_before",
   "country",
   "city",
@@ -47,9 +45,7 @@
   "service_type",
   "item_name",
   "work_location",
-  "work_location_eng",
   "monthly_salary",
-  "description",
   "other_notes",
   "amended_from"
  ],
@@ -110,21 +106,6 @@
    "label": "Contract Period"
   },
   {
-   "fieldname": "relative_name",
-   "fieldtype": "Data",
-   "label": "Relative Name"
-  },
-  {
-   "fieldname": "relative_address",
-   "fieldtype": "Data",
-   "label": "Relative Address"
-  },
-  {
-   "fieldname": "relative_phone",
-   "fieldtype": "Data",
-   "label": "Relative Phone"
-  },
-  {
    "allow_on_submit": 1,
    "depends_on": "eval: doc.own_recruitment == 0",
    "fieldname": "external_office",
@@ -142,7 +123,8 @@
    "fieldname": "country",
    "fieldtype": "Link",
    "label": "Country",
-   "options": "Country"
+   "options": "Country",
+   "reqd": 1
   },
   {
    "fieldname": "city",
@@ -217,19 +199,9 @@
    "label": "Work Location"
   },
   {
-   "fieldname": "work_location_eng",
-   "fieldtype": "Data",
-   "label": "Work Location Eng"
-  },
-  {
    "fieldname": "monthly_salary",
    "fieldtype": "Data",
    "label": "Monthly Salary"
-  },
-  {
-   "fieldname": "description",
-   "fieldtype": "Data",
-   "label": "Description"
   },
   {
    "fieldname": "other_notes",
@@ -321,12 +293,18 @@
    "fieldname": "family_info_section",
    "fieldtype": "Section Break",
    "label": "Family Info"
+  },
+  {
+   "fieldname": "nationality",
+   "fieldtype": "Link",
+   "label": "Nationality",
+   "options": "Country"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2021-01-26 22:57:11.330352",
+ "modified": "2021-02-01 23:35:22.990674",
  "modified_by": "Administrator",
  "module": "Recruitment Plus",
  "name": "CV",

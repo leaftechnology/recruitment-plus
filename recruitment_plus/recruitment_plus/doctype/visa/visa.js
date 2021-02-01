@@ -36,5 +36,15 @@ frappe.ui.form.on('Visa', {
             $address.textContent = 'none';
           });
         })
-	}
+	},
+    visa_price: function() {
+        cur_frm.doc.visa_final = cur_frm.doc.visa_price - cur_frm.doc.discount + (cur_frm.doc.amount_included_vat ? cur_frm.doc.visa_price * 0.15 : 0)
+        cur_frm.refresh_field("visa_final")
+    },
+    discount: function() {
+        cur_frm.trigger("visa_price")
+    },
+    amount_included_vat: function() {
+        cur_frm.trigger("visa_price")
+    },
 });

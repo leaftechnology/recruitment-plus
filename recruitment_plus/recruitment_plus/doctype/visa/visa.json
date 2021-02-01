@@ -26,9 +26,7 @@
   "amount_included_vat",
   "visa_price",
   "discount",
-  "vias_final",
-  "selected",
-  "desription",
+  "visa_final",
   "expected_duration_of_arrive",
   "destination",
   "airport_arrival",
@@ -77,13 +75,15 @@
    "fieldname": "religion",
    "fieldtype": "Link",
    "label": "Religion",
-   "options": "Religion"
+   "options": "Religion",
+   "reqd": 1
   },
   {
    "fieldname": "nationality",
    "fieldtype": "Link",
    "label": "Nationality",
-   "options": "Country"
+   "options": "Country",
+   "reqd": 1
   },
   {
    "default": "0",
@@ -95,12 +95,13 @@
    "fieldname": "external_office",
    "fieldtype": "Link",
    "label": "External Office",
-   "options": "Supplier"
+   "options": "Supplier",
+   "reqd": 1
   },
   {
    "fieldname": "external_office_price_by_dollar",
    "fieldtype": "Currency",
-   "label": "External Office Price By Dollar"
+   "label": "External Office Price By SAR"
   },
   {
    "fieldname": "destination",
@@ -131,34 +132,20 @@
    "default": "0",
    "fieldname": "amount_included_vat",
    "fieldtype": "Check",
-   "label": "Amount Included VAT"
+   "label": "Amount Included VAT 15%"
   },
   {
+   "default": "0",
    "fieldname": "visa_price",
    "fieldtype": "Currency",
    "in_list_view": 1,
    "label": "Visa Price"
   },
   {
+   "default": "0",
    "fieldname": "discount",
    "fieldtype": "Currency",
    "label": "Discount"
-  },
-  {
-   "fieldname": "vias_final",
-   "fieldtype": "Currency",
-   "label": "Vias Final"
-  },
-  {
-   "default": "0",
-   "fieldname": "selected",
-   "fieldtype": "Check",
-   "label": "Selected"
-  },
-  {
-   "fieldname": "desription",
-   "fieldtype": "Data",
-   "label": "Desription"
   },
   {
    "fieldname": "expected_duration_of_arrive",
@@ -217,12 +204,19 @@
    "fieldtype": "Data",
    "label": "Item Name",
    "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "visa_final",
+   "fieldtype": "Currency",
+   "label": "Visa Final",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2021-01-27 22:42:41.572455",
+ "modified": "2021-02-01 23:21:27.222787",
  "modified_by": "Administrator",
  "module": "Recruitment Plus",
  "name": "Visa",
