@@ -15,6 +15,7 @@
   "unit_price",
   "cv",
   "terms_and_conditions",
+  "rental_terms",
   "sales_invoice",
   "amended_from"
  ],
@@ -90,12 +91,18 @@
    "fieldtype": "Link",
    "label": "Terms and Conditions",
    "options": "Terms and Conditions"
+  },
+  {
+   "fetch_from": "terms_and_conditions.terms",
+   "fieldname": "rental_terms",
+   "fieldtype": "Text Editor",
+   "label": "Rental Terms"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2021-02-01 23:19:42.647705",
+ "modified": "2021-02-04 22:13:39.794437",
  "modified_by": "Administrator",
  "module": "Recruitment Plus",
  "name": "Rental",

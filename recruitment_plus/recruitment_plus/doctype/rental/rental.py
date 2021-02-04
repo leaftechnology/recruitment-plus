@@ -41,7 +41,7 @@ class Rental(Document):
 			"rental_reference": self.name,
 			"from_date": self.from_date,
 			"to_date": self.to_date,
-			"qty": self.quantity,
+			"qty": 1,
 			"amount": self.unit_price,
 		}]
 

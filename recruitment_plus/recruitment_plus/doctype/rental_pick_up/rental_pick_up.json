@@ -9,14 +9,12 @@
   "naming_series",
   "status",
   "customer",
-  "expiration",
-  "payment_terms",
   "from_date",
   "to_date",
-  "duration",
-  "quantity",
   "unit_price",
   "rental",
+  "terms_and_conditions",
+  "rental_terms",
   "amended_from"
  ],
  "fields": [
@@ -34,17 +32,6 @@
    "options": "Customer"
   },
   {
-   "fieldname": "expiration",
-   "fieldtype": "Date",
-   "label": "Expiration"
-  },
-  {
-   "fieldname": "payment_terms",
-   "fieldtype": "Link",
-   "label": "Payment Terms",
-   "options": "Payment Term"
-  },
-  {
    "fieldname": "from_date",
    "fieldtype": "Date",
    "label": "From Date"
@@ -53,16 +40,6 @@
    "fieldname": "to_date",
    "fieldtype": "Date",
    "label": "To Date"
-  },
-  {
-   "fieldname": "duration",
-   "fieldtype": "Data",
-   "label": "Duration"
-  },
-  {
-   "fieldname": "quantity",
-   "fieldtype": "Float",
-   "label": "Quantity"
   },
   {
    "fieldname": "unit_price",
@@ -91,12 +68,24 @@
    "label": "Rental",
    "options": "Rental",
    "read_only": 1
+  },
+  {
+   "fieldname": "terms_and_conditions",
+   "fieldtype": "Link",
+   "label": "Terms and Conditions",
+   "options": "Terms and Conditions"
+  },
+  {
+   "fetch_from": "terms_and_conditions.terms",
+   "fieldname": "rental_terms",
+   "fieldtype": "Text Editor",
+   "label": "Rental Terms"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2021-01-23 12:52:38.880120",
+ "modified": "2021-02-04 22:17:37.537237",
  "modified_by": "Administrator",
  "module": "Recruitment Plus",
  "name": "Rental Pick Up",
