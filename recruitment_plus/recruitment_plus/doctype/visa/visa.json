@@ -30,6 +30,7 @@
   "expected_duration_of_arrive",
   "destination",
   "airport_arrival",
+  "airline_name",
   "visa_status",
   "amended_from",
   "cv",
@@ -57,13 +58,15 @@
   },
   {
    "fieldname": "visa_type",
-   "fieldtype": "Data",
-   "label": "Visa Type"
+   "fieldtype": "Select",
+   "label": "Visa Type",
+   "options": "Single\nMultiple"
   },
   {
    "fieldname": "service",
-   "fieldtype": "Data",
-   "label": "Service"
+   "fieldtype": "Select",
+   "label": "Service",
+   "options": "Family Driver\nNurse\nDomestic Worker"
   },
   {
    "fieldname": "service_type",
@@ -95,13 +98,12 @@
    "fieldname": "external_office",
    "fieldtype": "Link",
    "label": "External Office",
-   "options": "Supplier",
-   "reqd": 1
+   "options": "Supplier"
   },
   {
    "fieldname": "external_office_price_by_dollar",
    "fieldtype": "Currency",
-   "label": "External Office Price By SAR"
+   "label": "External Office Price By USD"
   },
   {
    "fieldname": "destination",
@@ -155,7 +157,7 @@
   {
    "fieldname": "airport_arrival",
    "fieldtype": "Data",
-   "label": "Airport Arrival"
+   "label": "Arrival Airport"
   },
   {
    "fieldname": "visa_status",
@@ -211,12 +213,18 @@
    "fieldtype": "Currency",
    "label": "Visa Final",
    "read_only": 1
+  },
+  {
+   "fieldname": "airline_name",
+   "fieldtype": "Link",
+   "label": "Airline Name",
+   "options": "Airlines"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2021-02-01 23:21:27.222787",
+ "modified": "2021-02-04 19:56:06.887074",
  "modified_by": "Administrator",
  "module": "Recruitment Plus",
  "name": "Visa",

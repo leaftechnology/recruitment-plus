@@ -6,6 +6,7 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "sidebar_image",
   "naming_series",
   "status",
   "family_info_section",
@@ -107,7 +108,7 @@
   },
   {
    "allow_on_submit": 1,
-   "depends_on": "eval: doc.own_recruitment == 0",
+   "depends_on": "eval: doc.own_recruitment == 0 && doc.docstatus",
    "fieldname": "external_office",
    "fieldtype": "Link",
    "label": "External Office",
@@ -120,6 +121,7 @@
    "label": "Worked Before"
   },
   {
+   "depends_on": "eval: doc.worked_before",
    "fieldname": "country",
    "fieldtype": "Link",
    "label": "Country",
@@ -127,11 +129,13 @@
    "reqd": 1
   },
   {
+   "depends_on": "eval: doc.worked_before",
    "fieldname": "city",
    "fieldtype": "Data",
    "label": "City"
   },
   {
+   "depends_on": "eval: doc.worked_before",
    "fieldname": "experience_year_count",
    "fieldtype": "Data",
    "label": "Experience Year Count"
@@ -299,12 +303,19 @@
    "fieldtype": "Link",
    "label": "Nationality",
    "options": "Country"
+  },
+  {
+   "fieldname": "sidebar_image",
+   "fieldtype": "Attach Image",
+   "hidden": 1,
+   "label": "Sidebar Image"
   }
  ],
+ "image_field": "sidebar_image",
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2021-02-01 23:35:22.990674",
+ "modified": "2021-02-04 18:59:43.509506",
  "modified_by": "Administrator",
  "module": "Recruitment Plus",
  "name": "CV",

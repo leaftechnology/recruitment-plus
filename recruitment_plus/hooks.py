@@ -153,6 +153,7 @@ fixtures = [
                     "Purchase Invoice-reference",
                     "Sales Invoice-reference",
                     "Sales Invoice-rental",
+                    "Customer-national_id",
                 ]
             ]
         ]
