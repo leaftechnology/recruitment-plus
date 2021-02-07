@@ -1,5 +1,4 @@
 
-
 cur_frm.cscript.customer = function () {
     if(cur_frm.doc.customer){
         frappe.db.get_doc('Customer', cur_frm.doc.customer)

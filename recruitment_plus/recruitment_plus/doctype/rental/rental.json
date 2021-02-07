@@ -10,13 +10,16 @@
   "status",
   "customer",
   "customer_name",
-  "from_date",
-  "to_date",
   "unit_price",
   "cv",
   "terms_and_conditions",
   "rental_terms",
   "sales_invoice",
+  "column_break_10",
+  "from_date",
+  "to_date",
+  "number_of_days",
+  "amount_for_employee",
   "amended_from"
  ],
  "fields": [
@@ -39,7 +42,7 @@
   {
    "fieldname": "unit_price",
    "fieldtype": "Currency",
-   "label": "Unit Price"
+   "label": "Amount from Customer"
   },
   {
    "fieldname": "amended_from",
@@ -97,12 +100,28 @@
    "fieldname": "rental_terms",
    "fieldtype": "Text Editor",
    "label": "Rental Terms"
+  },
+  {
+   "fieldname": "column_break_10",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "number_of_days",
+   "fieldtype": "Float",
+   "label": "Number of Days"
+  },
+  {
+   "default": "0",
+   "fieldname": "amount_for_employee",
+   "fieldtype": "Currency",
+   "label": "Amount for Employee"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2021-02-04 22:13:39.794437",
+ "modified": "2021-02-07 09:12:43.546652",
  "modified_by": "Administrator",
  "module": "Recruitment Plus",
  "name": "Rental",
