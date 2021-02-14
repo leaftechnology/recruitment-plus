@@ -8,6 +8,11 @@ from datetime import *
 from frappe.model.document import Document
 
 class CV(Document):
+	def validate(self):
+		company = frappe.get_single("Global Defaults").__dict__
+		print(company['default_company'])
+		print(frappe.get_value("Company", company['default_company'], "default_receivable_account"))
+
 	def on_update_after_submit(self):
 		print("NAA MAN")
 		# self.change_status("In Progress" if self.customer else "Available")
@@ -57,12 +62,15 @@ class CV(Document):
 		rental = frappe.get_doc(obj).insert()
 		return rental.name
 	def generate_si(self):
+		company = frappe.get_single("Global Defaults").__dict__
+		print(frappe.get_value("Company", company.default_company, "default_receivable_account"))
 		obj = {
 			"doctype": "Sales Invoice",
 			"customer": self.customer,
 			"due_date": frappe.utils.now_datetime().date(),
 			"items": self.get_items("Sales"),
-			"reference": self.get_visa_reference()
+			"reference": self.get_visa_reference(),
+			"debit_to": frappe.get_value("Company", company.default_company, "default_receivable_account")
 		}
 		si = frappe.get_doc(obj).insert()
 		frappe.db.sql(""" UPDATE `tabVisa` SET sales_invoice=%s WHERE cv=%s """, (si.name, self.name))
