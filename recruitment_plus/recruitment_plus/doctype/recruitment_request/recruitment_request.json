@@ -11,6 +11,7 @@
   "naming_series",
   "customer",
   "customer_name",
+  "national_id",
   "column_break_6",
   "telephone",
   "email",
@@ -100,12 +101,18 @@
    "fieldtype": "Data",
    "hidden": 1,
    "label": "Previous Status"
+  },
+  {
+   "fetch_from": "customer.national_id",
+   "fieldname": "national_id",
+   "fieldtype": "Data",
+   "label": "National ID"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2021-01-26 18:11:20.519903",
+ "modified": "2021-02-12 20:25:49.676556",
  "modified_by": "Administrator",
  "module": "Recruitment Plus",
  "name": "Recruitment Request",

@@ -153,8 +153,9 @@
   },
   {
    "fieldname": "expected_duration_of_arrive",
-   "fieldtype": "Data",
-   "label": "Expected Duration Of Arrive"
+   "fieldtype": "Select",
+   "label": "Expected Duration Of Arrive",
+   "options": "\n1 Hour\n2 Hour\n3 Hour\n4 Hour\n5 Hour\n6 Hour"
   },
   {
    "fieldname": "airport_arrival",
@@ -232,7 +233,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2021-02-04 22:35:59.027881",
+ "modified": "2021-02-14 15:24:10.922772",
  "modified_by": "Administrator",
  "module": "Recruitment Plus",
  "name": "Visa",

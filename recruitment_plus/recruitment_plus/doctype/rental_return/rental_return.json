@@ -9,22 +9,19 @@
   "naming_series",
   "status",
   "customer",
-  "from_date",
-  "to_date",
+  "customer_name",
   "unit_price",
+  "cv",
   "terms_and_conditions",
   "rental_terms",
-  "rental",
-  "amended_from"
+  "sales_invoice",
+  "column_break_10",
+  "from_date",
+  "to_date",
+  "number_of_days",
+  "amount_for_employee"
  ],
  "fields": [
-  {
-   "fieldname": "status",
-   "fieldtype": "Select",
-   "hidden": 1,
-   "label": "Status",
-   "options": "\nConfirmed\nPending\nPick Up Completed"
-  },
   {
    "fieldname": "customer",
    "fieldtype": "Link",
@@ -44,15 +41,21 @@
   {
    "fieldname": "unit_price",
    "fieldtype": "Currency",
-   "label": "Unit Price"
+   "label": "Amount from Customer"
   },
   {
-   "fieldname": "amended_from",
+   "default": "Confirmed",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Status",
+   "options": "\nConfirmed\nTo Pick Up\nTo Return\nCompleted"
+  },
+  {
+   "fieldname": "cv",
    "fieldtype": "Link",
-   "label": "Amended From",
-   "no_copy": 1,
-   "options": "Rental Return",
-   "print_hide": 1,
+   "label": "CV",
+   "options": "CV",
    "read_only": 1
   },
   {
@@ -60,13 +63,20 @@
    "fieldtype": "Select",
    "hidden": 1,
    "label": "Series",
-   "options": "RRN-.YYYY.-"
+   "options": "RN-.YYYY.-"
   },
   {
-   "fieldname": "rental",
+   "fieldname": "sales_invoice",
    "fieldtype": "Link",
-   "label": "Rental",
-   "options": "Rental",
+   "label": "Sales Invoice",
+   "options": "Sales Invoice",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "customer.customer_name",
+   "fieldname": "customer_name",
+   "fieldtype": "Data",
+   "label": "Customer Name",
    "read_only": 1
   },
   {
@@ -80,12 +90,29 @@
    "fieldname": "rental_terms",
    "fieldtype": "Text Editor",
    "label": "Rental Terms"
+  },
+  {
+   "fieldname": "column_break_10",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "number_of_days",
+   "fieldtype": "Float",
+   "label": "Number of Days",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "amount_for_employee",
+   "fieldtype": "Currency",
+   "label": "Amount for Employee"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2021-02-04 22:17:45.896317",
+ "modified": "2021-02-12 20:40:05.867183",
  "modified_by": "Administrator",
  "module": "Recruitment Plus",
  "name": "Rental Return",

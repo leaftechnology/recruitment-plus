@@ -307,6 +307,7 @@
    "options": "Country"
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "sidebar_image",
    "fieldtype": "Attach Image",
    "hidden": 1,
@@ -317,7 +318,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2021-02-07 08:57:01.794554",
+ "modified": "2021-02-14 15:26:59.731252",
  "modified_by": "Administrator",
  "module": "Recruitment Plus",
  "name": "CV",
