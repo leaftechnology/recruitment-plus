@@ -66,6 +66,7 @@ class CV(Document):
 		obj = {
 			"doctype": "Sales Invoice",
 			"customer": self.customer,
+			"customer_name": self.customer_name,
 			"due_date": frappe.utils.now_datetime().date(),
 			"items": self.get_items("Sales"),
 			"reference": self.get_visa_reference(),
