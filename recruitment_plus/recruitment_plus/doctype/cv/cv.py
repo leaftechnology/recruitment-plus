@@ -63,14 +63,13 @@ class CV(Document):
 		return rental.name
 	def generate_si(self):
 		company = frappe.get_single("Global Defaults").__dict__
-		print(frappe.get_value("Company", company.default_company, "default_receivable_account"))
 		obj = {
 			"doctype": "Sales Invoice",
 			"customer": self.customer,
 			"due_date": frappe.utils.now_datetime().date(),
 			"items": self.get_items("Sales"),
 			"reference": self.get_visa_reference(),
-			"debit_to": frappe.get_value("Company", company.default_company, "default_receivable_account")
+			"debit_to": frappe.get_value("Company", company['default_company'], "default_receivable_account")
 		}
 		si = frappe.get_doc(obj).insert()
 		frappe.db.sql(""" UPDATE `tabVisa` SET sales_invoice=%s WHERE cv=%s """, (si.name, self.name))
