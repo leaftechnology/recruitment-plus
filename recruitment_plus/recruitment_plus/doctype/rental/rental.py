@@ -7,6 +7,63 @@ import frappe
 from frappe.model.document import Document
 
 class Rental(Document):
+	def generate_additional_salary(self):
+		recruitment_defaults = frappe.get_single("Recruitment Settings").__dict__
+		print("REEEEEEEEEEEEEEEEe")
+		print(recruitment_defaults)
+		if not recruitment_defaults['default_salary_component']:
+			frappe.throw("Please set Default Salary Component in Recruitment Settings")
+
+		obj = {
+			"doctype": "Additional Salary",
+			"employee": self.employee,
+			"payroll_date": self.from_date,
+			"rental": self.name,
+			"salary_component": recruitment_defaults['default_salary_component'],
+			"amount": self.amount_for_employee,
+		}
+		additiona_salary = frappe.get_doc(obj)
+		additiona_salary.insert(ignore_permissions=1)
+		frappe.db.sql(""" UPDATE `tabRental` SET additional_salary=%s WHERE name=%s""", (additiona_salary.name, self.name))
+		frappe.db.commit()
+		return additiona_salary.name
+	def generate_rental_jv(self):
+		doc_jv = {
+			"doctype": "Journal Entry",
+			"voucher_type": "Journal Entry",
+			"posting_date": self.from_date,
+			"rental": self.name,
+			"accounts": self.jv_accounts_paid(),
+		}
+
+		jv = frappe.get_doc(doc_jv)
+		jv.insert(ignore_permissions=1)
+		# jv.submit()
+		frappe.db.sql(""" UPDATE `tabRental` SET journal_entry=%s WHERE name=%s""", (jv.name, self.name))
+		frappe.db.commit()
+
+		return jv.name
+
+	def jv_accounts_paid(self):
+		accounts = []
+		recruitment_defaults = frappe.get_single("Recruitment Settings").__dict__
+		if not recruitment_defaults['default_expense_account']:
+			frappe.throw("Please set Default Expense Account in Recruitment Settings")
+
+		accounts.append({
+			'account': recruitment_defaults['default_expense_account'],
+			'debit_in_account_currency': self.unit_price,
+			'credit_in_account_currency': 0,
+		})
+		mop = frappe.db.sql(""" SELECT * FROM `tabMode of Payment Account` WHERE parent=%s """,
+								 (recruitment_defaults['mode_of_payment']), as_dict=1)
+		if len(mop) > 0:
+			accounts.append({
+				'account': mop[0].default_account,
+				'debit_in_account_currency': 0,
+				'credit_in_account_currency': self.unit_price
+			})
+		return accounts
 	def generate_rental_pickup(self):
 		obj = {
 			"doctype": "Rental Pick Up",

@@ -40,9 +40,53 @@ frappe.ui.form.on('Rental', {
 	    if(!cur_frm.is_new()) {
             document.querySelectorAll("[data-doctype='Rental Pick Up']")[1].style.display = "none";
             document.querySelectorAll("[data-doctype='Rental Return']")[1].style.display = "none";
+            document.querySelectorAll("[data-doctype='Journal Entry']")[1].style.display = "none";
+            document.querySelectorAll("[data-doctype='Additional Salary']")[1].style.display = "none";
+            document.querySelectorAll("[data-doctype='Sales Invoice']")[1].style.display = "none";
+        }
+        if(cur_frm.doc.docstatus && !cur_frm.doc.salary_based && !cur_frm.doc.journal_entry){
+	        cur_frm.add_custom_button(__("Rental JV"), () => {
+                    cur_frm.call({
+                        doc: cur_frm.doc,
+                        method: 'generate_rental_jv',
+                        args: {},
+                        freeze: true,
+                        freeze_message: "Generating Rental JV...",
+                        callback: (rr) => {
+                            frappe.set_route("Form", "Journal Entry", rr.message);
+                        }
+                    })
+            })
+        }
+        if(cur_frm.doc.docstatus && cur_frm.doc.salary_based && !cur_frm.doc.additional_salary){
+	        cur_frm.add_custom_button(__("Additional Salary"), () => {
+                    cur_frm.call({
+                        doc: cur_frm.doc,
+                        method: 'generate_additional_salary',
+                        args: {},
+                        freeze: true,
+                        freeze_message: "Generating Rental JV...",
+                        callback: (rr) => {
+                                    frappe.set_route("Form", "Additional Salary", rr.message);
+
+                        }
+                    })
+            })
         }
         if(cur_frm.doc.status === "To Pick Up"){
+            cur_frm.add_custom_button(__("Pick Up"), () => {
+                    cur_frm.call({
+                        doc: cur_frm.doc,
+                        method: 'generate_rental_pickup',
+                        args: {},
+                        freeze: true,
+                        freeze_message: "Generating Rental Pick Up...",
+                        callback: (rr) => {
+                                    frappe.set_route("Form", "Rental Pick Up", rr.message);
 
+                        }
+                    })
+            })
         } else if(cur_frm.doc.status === "To Return"){
             cur_frm.add_custom_button(__("Rental Return"), () => {
                     cur_frm.call({

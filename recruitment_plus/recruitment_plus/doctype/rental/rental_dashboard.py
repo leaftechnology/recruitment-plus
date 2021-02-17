@@ -10,7 +10,7 @@ def get_data():
 		'transactions': [
 			{
 				'label': _('Linked Forms'),
-				'items': ["Rental Pick Up","Rental Return", "Sales Invoice"]
+				'items': ["Rental Pick Up","Rental Return", "Sales Invoice", "Journal Entry", "Additional Salary"]
 			}
 		]
 	}

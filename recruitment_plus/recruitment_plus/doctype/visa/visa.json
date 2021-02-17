@@ -6,6 +6,7 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "status",
   "naming_series",
   "visa_serial",
   "visa_no",
@@ -228,12 +229,20 @@
    "fieldname": "external_office_price_by_sar",
    "fieldtype": "Currency",
    "label": "External Office Price By SAR"
+  },
+  {
+   "default": "Available",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Status",
+   "options": "\nAvailable\nUsed\nNot Available"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2021-02-14 15:24:10.922772",
+ "modified": "2021-02-17 17:58:55.929971",
  "modified_by": "Administrator",
  "module": "Recruitment Plus",
  "name": "Visa",

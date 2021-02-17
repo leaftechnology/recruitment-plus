@@ -19,7 +19,9 @@
   "from_date",
   "to_date",
   "number_of_days",
-  "amount_for_employee"
+  "rental",
+  "amount_for_employee",
+  "amended_from"
  ],
  "fields": [
   {
@@ -107,12 +109,28 @@
    "fieldname": "amount_for_employee",
    "fieldtype": "Currency",
    "label": "Amount for Employee"
+  },
+  {
+   "fieldname": "rental",
+   "fieldtype": "Link",
+   "label": "Rental",
+   "options": "Rental",
+   "read_only": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Rental Pick Up",
+   "print_hide": 1,
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2021-02-12 20:39:50.450141",
+ "modified": "2021-02-17 18:18:21.274436",
  "modified_by": "Administrator",
  "module": "Recruitment Plus",
  "name": "Rental Pick Up",

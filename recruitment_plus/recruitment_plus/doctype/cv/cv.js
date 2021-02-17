@@ -1,51 +1,5 @@
-
-cur_frm.cscript.customer = function () {
-    if(cur_frm.doc.customer){
-        frappe.db.get_doc('Customer', cur_frm.doc.customer)
-            .then(customer => {
-                cur_frm.doc.customer_name = customer.customer_name
-                cur_frm.refresh_field("customer_name")
-            })
-
-    } else {
-        cur_frm.doc.customer_name = ""
-        cur_frm.refresh_field("customer_name")
-    }
-}
-cur_frm.cscript.recruitment_request = function () {
-    if(cur_frm.doc.recruitment_request){
-        frappe.db.get_doc('Recruitment Request', cur_frm.doc.recruitment_request)
-            .then(customer => {
-                cur_frm.doc.customer_name = customer.customer_name
-                cur_frm.refresh_field("customer_name")
-            })
-
-    } else {
-        cur_frm.doc.customer_name = ""
-        cur_frm.refresh_field("customer_name")
-    }
-}
-
-cur_frm.cscript.external_office = function () {
-    if(cur_frm.doc.external_office){
-        cur_frm.set_df_property("customer", "read_only", 1)
-        cur_frm.set_df_property("recruitment_request", "read_only", 1)
-        cur_frm.set_df_property("own_recruitment", "read_only", 1)
-    } else {
-        cur_frm.set_df_property("customer", "read_only", 0)
-        cur_frm.set_df_property("recruitment_request", "read_only", 0)
-        cur_frm.set_df_property("own_recruitment", "read_only", 0)
-    }
-}
-var submitted_visa = false
-var existing_visa = false
-var existing_si = false
-var existing_pi = false
-var existing_ = false
-var existing_rental = false
-
-cur_frm.cscript.refresh = function () {
-    $.getScript("https://cdn.jsdelivr.net/npm/places.js@1.19.0", function () {
+function add_location(cur_frm) {
+     $.getScript("https://cdn.jsdelivr.net/npm/places.js@1.19.0", function () {
           var placesAutocomplete = places({
             appId: 'plBBA3S4UJ7B',
             apiKey: '0862ae80a132be1181fac98cf20ecfac',
@@ -127,12 +81,58 @@ cur_frm.cscript.refresh = function () {
           });
         })
 
+}
+
+cur_frm.cscript.customer = function () {
+    if(cur_frm.doc.customer){
+        frappe.db.get_doc('Customer', cur_frm.doc.customer)
+            .then(customer => {
+                cur_frm.doc.customer_name = customer.customer_name
+                cur_frm.refresh_field("customer_name")
+            })
+
+    } else {
+        cur_frm.doc.customer_name = ""
+        cur_frm.refresh_field("customer_name")
+    }
+}
+cur_frm.cscript.recruitment_request = function () {
+    if(cur_frm.doc.recruitment_request){
+        frappe.db.get_doc('Recruitment Request', cur_frm.doc.recruitment_request)
+            .then(customer => {
+                cur_frm.doc.customer_name = customer.customer_name
+                cur_frm.refresh_field("customer_name")
+            })
+
+    } else {
+        cur_frm.doc.customer_name = ""
+        cur_frm.refresh_field("customer_name")
+    }
+}
+
+cur_frm.cscript.external_office = function () {
+    if(cur_frm.doc.external_office){
+        cur_frm.set_df_property("customer", "read_only", 1)
+        cur_frm.set_df_property("recruitment_request", "read_only", 1)
+        cur_frm.set_df_property("own_recruitment", "read_only", 1)
+    } else {
+        cur_frm.set_df_property("customer", "read_only", 0)
+        cur_frm.set_df_property("recruitment_request", "read_only", 0)
+        cur_frm.set_df_property("own_recruitment", "read_only", 0)
+    }
+}
+var submitted_visa = false
+var existing_visa = false
+var existing_si = false
+var existing_pi = false
+var existing_rental = false
+
+cur_frm.cscript.refresh = function () {
+   add_location(cur_frm)
     if(!cur_frm.is_new()) {
         document.querySelectorAll("[data-doctype='Visa']")[1].style.display = "none";
         document.querySelectorAll("[data-doctype='Rental']")[1].style.display = "none";
         document.querySelectorAll("[data-doctype='Recruitment Request']")[1].style.display = "none";
-        // document.querySelectorAll("[data-doctype='Stock Entry']")[1].style.display = "none";
-        // document.querySelectorAll("[data-doctype='Job Completion Report']")[1].style.display = "none";
     }
     frappe.call({
         method: "recruitment_plus.recruitment_plus.doctype.cv.cv.get_submitted_visa",
@@ -148,7 +148,7 @@ cur_frm.cscript.refresh = function () {
             existing_rental = r.message[4]
         }
     })
- cur_frm.set_query('recruitment_request', () => {
+    cur_frm.set_query('recruitment_request', () => {
             return {
                 filters: [
                         ["status", "=", "Open"],
@@ -161,19 +161,16 @@ cur_frm.cscript.refresh = function () {
     } else {
         cur_frm.set_df_property("customer", "read_only", 0)
     }
-    if(cur_frm.doc.customer || cur_frm.doc.recruitment_request){
-        cur_frm.set_df_property("external_office", "read_only", 0)
-    } else {
-                cur_frm.set_df_property("external_office", "read_only", 1)
 
-    }
     if(existing_rental){
         cur_frm.set_df_property("own_recruitment", "read_only", 1)
     } else {
         cur_frm.set_df_property("external_office", "read_only", 0)
     }
-
-    if(["In Progress", "Sent to Outside"].includes(cur_frm.doc.status) && !existing_visa){
+    if((cur_frm.doc.customer || cur_frm.doc.recruitment_request) && existing_si){
+        cur_frm.set_df_property("external_office", "read_only", 0)
+    }
+    if((["In Progress", "Sent to Outside"].includes(cur_frm.doc.status) && !existing_visa) || (cur_frm.doc.own_recruitment && !existing_visa)){
        cur_frm.add_custom_button(__("Visa"), () => {
                     cur_frm.call({
                         doc: cur_frm.doc,
@@ -182,8 +179,7 @@ cur_frm.cscript.refresh = function () {
                         freeze: true,
                         freeze_message: "Generating Visa...",
                         callback: (rr) => {
-
-                                    frappe.set_route("Form", "Visa", rr.message);
+                            frappe.set_route("Form", "Visa", rr.message);
                         }
                     })
             })
@@ -202,7 +198,7 @@ cur_frm.cscript.refresh = function () {
                     })
             })
     }
-     if(submitted_visa && !existing_si){
+     if(submitted_visa && !existing_si && !cur_frm.doc.own_recruitment){
        cur_frm.add_custom_button(__("Sales Invoice"), () => {
                     cur_frm.call({
                         doc: cur_frm.doc,
@@ -217,7 +213,9 @@ cur_frm.cscript.refresh = function () {
                     })
             })
     }
-    if(cur_frm.doc.external_office && cur_frm.doc.status === "Sent to Outside" && !existing_pi){
+
+    if((existing_si && !existing_pi && cur_frm.doc.external_office) || (existing_rental && !existing_pi && cur_frm.doc.external_office)){
+
        cur_frm.add_custom_button(__("Purchase Invoice"), () => {
                     cur_frm.call({
                         doc: cur_frm.doc,
