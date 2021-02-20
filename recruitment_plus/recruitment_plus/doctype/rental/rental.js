@@ -24,18 +24,6 @@ function compute_days(cur_frm) {
 
 }
 frappe.ui.form.on('Rental', {
-    on_submit: function () {
-        cur_frm.call({
-            doc: cur_frm.doc,
-            method: 'generate_si',
-            args: {},
-            freeze: true,
-            freeze_message: "Generating Sales Invoice...",
-            callback: (rr) => {
-                frappe.set_route("Form", "Sales Invoice", rr.message);
-            }
-        })
-    },
 	refresh: function(frm) {
 	    if(!cur_frm.is_new()) {
             document.querySelectorAll("[data-doctype='Rental Pick Up']")[1].style.display = "none";
@@ -43,6 +31,20 @@ frappe.ui.form.on('Rental', {
             document.querySelectorAll("[data-doctype='Journal Entry']")[1].style.display = "none";
             document.querySelectorAll("[data-doctype='Additional Salary']")[1].style.display = "none";
             document.querySelectorAll("[data-doctype='Sales Invoice']")[1].style.display = "none";
+        }
+        if(cur_frm.doc.status && !cur_frm.doc.sales_invoice){
+            cur_frm.add_custom_button(__("Sales Invoice"), () => {
+                    cur_frm.call({
+                        doc: cur_frm.doc,
+                        method: 'generate_rental_jv',
+                        args: {},
+                        freeze: true,
+                        freeze_message: "Generating Rental JV...",
+                        callback: (rr) => {
+                            frappe.set_route("Form", "Sales Invoice", rr.message);
+                        }
+                    })
+            })
         }
         if(cur_frm.doc.docstatus && !cur_frm.doc.salary_based && !cur_frm.doc.journal_entry){
 	        cur_frm.add_custom_button(__("Rental JV"), () => {

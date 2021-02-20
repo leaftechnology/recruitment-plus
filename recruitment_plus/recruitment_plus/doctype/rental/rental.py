@@ -47,6 +47,7 @@ class Rental(Document):
 	def jv_accounts_paid(self):
 		accounts = []
 		recruitment_defaults = frappe.get_single("Recruitment Settings").__dict__
+
 		if not recruitment_defaults['default_expense_account']:
 			frappe.throw("Please set Default Expense Account in Recruitment Settings")
 
@@ -57,12 +58,14 @@ class Rental(Document):
 		})
 		mop = frappe.db.sql(""" SELECT * FROM `tabMode of Payment Account` WHERE parent=%s """,
 								 (recruitment_defaults['mode_of_payment']), as_dict=1)
-		if len(mop) > 0:
-			accounts.append({
-				'account': mop[0].default_account,
-				'debit_in_account_currency': 0,
-				'credit_in_account_currency': self.unit_price
-			})
+		if len(mop) == 0:
+			frappe.throw("Please set Mode of Payment in Recruitment Settings")
+
+		accounts.append({
+			'account': mop[0].default_account,
+			'debit_in_account_currency': 0,
+			'credit_in_account_currency': self.unit_price
+		})
 		return accounts
 	def generate_rental_pickup(self):
 		obj = {
