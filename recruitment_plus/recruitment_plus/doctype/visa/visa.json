@@ -8,7 +8,6 @@
  "field_order": [
   "status",
   "naming_series",
-  "visa_serial",
   "visa_no",
   "visa_date",
   "visa_type",
@@ -29,23 +28,12 @@
   "visa_price",
   "discount",
   "visa_final",
-  "expected_duration_of_arrive",
-  "destination",
-  "airport_arrival",
-  "airline_name",
-  "visa_status",
   "amended_from",
   "cv",
   "sales_invoice",
   "purchase_invoice"
  ],
  "fields": [
-  {
-   "fieldname": "visa_serial",
-   "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "Visa Serial"
-  },
   {
    "fieldname": "visa_no",
    "fieldtype": "Data",
@@ -109,11 +97,6 @@
    "label": "External Office Price By USD"
   },
   {
-   "fieldname": "destination",
-   "fieldtype": "Data",
-   "label": "Destination Airport"
-  },
-  {
    "fieldname": "cost_center",
    "fieldtype": "Link",
    "label": "Cost Center",
@@ -151,23 +134,6 @@
    "fieldname": "discount",
    "fieldtype": "Currency",
    "label": "Discount"
-  },
-  {
-   "fieldname": "expected_duration_of_arrive",
-   "fieldtype": "Select",
-   "label": "Expected Duration Of Arrive",
-   "options": "\n1 Hour\n2 Hour\n3 Hour\n4 Hour\n5 Hour\n6 Hour"
-  },
-  {
-   "fieldname": "airport_arrival",
-   "fieldtype": "Data",
-   "label": "Arrival Airport"
-  },
-  {
-   "fieldname": "visa_status",
-   "fieldtype": "Select",
-   "label": "Visa Status",
-   "options": "\nAvailable\nUsed\nNot available"
   },
   {
    "fieldname": "amended_from",
@@ -219,12 +185,6 @@
    "read_only": 1
   },
   {
-   "fieldname": "airline_name",
-   "fieldtype": "Link",
-   "label": "Airline Name",
-   "options": "Airlines"
-  },
-  {
    "default": "0",
    "fieldname": "external_office_price_by_sar",
    "fieldtype": "Currency",
@@ -242,7 +202,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2021-02-17 17:58:55.929971",
+ "modified": "2021-03-03 22:46:10.180295",
  "modified_by": "Administrator",
  "module": "Recruitment Plus",
  "name": "Visa",

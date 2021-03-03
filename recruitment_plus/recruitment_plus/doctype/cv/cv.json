@@ -11,8 +11,6 @@
   "status",
   "family_info_section",
   "full_name",
-  "mother",
-  "father",
   "weight",
   "height",
   "age",
@@ -48,6 +46,11 @@
   "work_location",
   "monthly_salary",
   "other_notes",
+  "section_break_41",
+  "expected_duration_of_arrive",
+  "destination_airport",
+  "airport_arrival",
+  "airline_name",
   "amended_from"
  ],
  "fields": [
@@ -55,16 +58,6 @@
    "fieldname": "full_name",
    "fieldtype": "Data",
    "label": "Full Name"
-  },
-  {
-   "fieldname": "mother",
-   "fieldtype": "Data",
-   "label": "Mother"
-  },
-  {
-   "fieldname": "father",
-   "fieldtype": "Data",
-   "label": "Father"
   },
   {
    "fieldname": "weight",
@@ -195,7 +188,7 @@
    "fieldname": "service_type",
    "fieldtype": "Link",
    "in_list_view": 1,
-   "label": "Service Type",
+   "label": "Recruitment Type",
    "options": "Item",
    "reqd": 1
   },
@@ -311,13 +304,46 @@
    "fieldtype": "Attach Image",
    "hidden": 1,
    "label": "Sidebar Image"
+  },
+  {
+   "fieldname": "section_break_41",
+   "fieldtype": "Section Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "depends_on": "eval: doc.status == 'Sent to Outside'",
+   "fieldname": "expected_duration_of_arrive",
+   "fieldtype": "Select",
+   "label": "Expected Duration of Arrive",
+   "options": "\n1 Hour\n2 Hour\n3 Hour\n4 Hour\n5 Hour\n6 Hour"
+  },
+  {
+   "allow_on_submit": 1,
+   "depends_on": "eval: doc.status == 'Sent to Outside'",
+   "fieldname": "destination_airport",
+   "fieldtype": "Data",
+   "label": "Destination AIrport"
+  },
+  {
+   "allow_on_submit": 1,
+   "depends_on": "eval: doc.status == 'Sent to Outside'",
+   "fieldname": "airport_arrival",
+   "fieldtype": "Data",
+   "label": "Arrival Airport"
+  },
+  {
+   "allow_on_submit": 1,
+   "depends_on": "eval: doc.status == 'Sent to Outside'",
+   "fieldname": "airline_name",
+   "fieldtype": "Data",
+   "label": "Airline Name"
   }
  ],
  "image_field": "sidebar_image",
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2021-02-17 12:40:39.495603",
+ "modified": "2021-03-03 22:47:02.573470",
  "modified_by": "Administrator",
  "module": "Recruitment Plus",
  "name": "CV",
