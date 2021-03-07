@@ -132,10 +132,10 @@ cur_frm.cscript.refresh = function () {
           var placesAutocomplete = places({
             appId: 'plBBA3S4UJ7B',
             apiKey: '0862ae80a132be1181fac98cf20ecfac',
-            container: cur_frm.fields_dict.destination.input
+            container: cur_frm.fields_dict.destination_airport.input
           });
 
-          var $address = cur_frm.fields_dict.destination.input
+          var $address = cur_frm.fields_dict.destination_airport.input
           placesAutocomplete.on('change', function(e) {
             $address.textContent = e.suggestion.value
           });
