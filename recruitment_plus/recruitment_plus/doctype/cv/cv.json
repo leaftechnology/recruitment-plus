@@ -40,6 +40,7 @@
   "customer",
   "recruitment_request",
   "customer_name",
+  "external_office_check",
   "external_office",
   "service_type",
   "item_name",
@@ -102,7 +103,7 @@
   },
   {
    "allow_on_submit": 1,
-   "depends_on": "eval: doc.docstatus",
+   "depends_on": "eval: doc.docstatus && doc.external_office_check",
    "fieldname": "external_office",
    "fieldtype": "Link",
    "label": "External Office",
@@ -274,7 +275,7 @@
   {
    "allow_on_submit": 1,
    "default": "0",
-   "depends_on": "eval: doc.docstatus == 1 && doc.own_recruitment == 0",
+   "depends_on": "eval: doc.docstatus == 1 && doc.own_recruitment == 0 && doc.status == \"Available\"",
    "fieldname": "cv_for_recruitment_request",
    "fieldtype": "Check",
    "label": "CV for Recruitment Request",
@@ -313,6 +314,7 @@
   },
   {
    "allow_on_submit": 1,
+   "depends_on": "eval: doc.status == \"Sent to Outside\"",
    "fieldname": "expected_duration_of_arrive",
    "fieldtype": "Select",
    "label": "Expected Duration of Arrive",
@@ -320,28 +322,38 @@
   },
   {
    "allow_on_submit": 1,
+   "depends_on": "eval: doc.status == \"Sent to Outside\"",
    "fieldname": "destination_airport",
    "fieldtype": "Data",
    "label": "Destination AIrport"
   },
   {
    "allow_on_submit": 1,
+   "depends_on": "eval: doc.status == \"Sent to Outside\"",
    "fieldname": "airport_arrival",
    "fieldtype": "Data",
    "label": "Arrival Airport"
   },
   {
    "allow_on_submit": 1,
+   "depends_on": "eval: doc.status == \"Sent to Outside\"",
    "fieldname": "airline_name",
    "fieldtype": "Data",
    "label": "Airline Name"
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "0",
+   "fieldname": "external_office_check",
+   "fieldtype": "Check",
+   "label": "External Office"
   }
  ],
  "image_field": "sidebar_image",
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2021-03-05 13:15:19.237429",
+ "modified": "2021-04-05 22:06:05.536723",
  "modified_by": "Administrator",
  "module": "Recruitment Plus",
  "name": "CV",

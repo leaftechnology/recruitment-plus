@@ -16,7 +16,6 @@
   "item_name",
   "religion",
   "nationality",
-  "worked_before",
   "external_office",
   "external_office_price_by_dollar",
   "external_office_price_by_sar",
@@ -77,12 +76,6 @@
    "label": "Nationality",
    "options": "Country",
    "reqd": 1
-  },
-  {
-   "default": "0",
-   "fieldname": "worked_before",
-   "fieldtype": "Check",
-   "label": "Worked Before"
   },
   {
    "fieldname": "external_office",
@@ -202,7 +195,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2021-03-03 22:46:10.180295",
+ "modified": "2021-04-05 21:41:41.003118",
  "modified_by": "Administrator",
  "module": "Recruitment Plus",
  "name": "Visa",

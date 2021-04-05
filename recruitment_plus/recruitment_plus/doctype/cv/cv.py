@@ -44,7 +44,6 @@ class CV(Document):
 			"service_type": self.service_type,
 			"religion": self.religion,
 			"nationality": self.nationality,
-			"worked_before": self.worked_before,
 			"external_office": self.external_office,
 			"from_age": self.age,
 			"to_age": self.age,

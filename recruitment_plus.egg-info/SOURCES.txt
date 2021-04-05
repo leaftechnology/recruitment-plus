@@ -89,5 +89,6 @@ recruitment_plus/recruitment_plus/doctype/visa/visa.json
 recruitment_plus/recruitment_plus/doctype/visa/visa.py
 recruitment_plus/recruitment_plus/doctype/visa/visa_dashboard.py
 recruitment_plus/recruitment_plus/doctype/visa/visa_list.js
+recruitment_plus/recruitment_plus/workspace/recruitment/recruitment.json
 recruitment_plus/templates/__init__.py
 recruitment_plus/templates/pages/__init__.py

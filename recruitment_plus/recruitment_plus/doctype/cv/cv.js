@@ -231,7 +231,7 @@ cur_frm.cscript.refresh = function () {
                     })
             })
     }
-     if(submitted_visa && !existing_si && !cur_frm.doc.own_recruitment){
+     if(submitted_visa && !existing_si && !cur_frm.doc.own_recruitment && !cur_frm.doc.external_office){
        cur_frm.add_custom_button(__("Sales Invoice"), () => {
                     cur_frm.call({
                         doc: cur_frm.doc,
