@@ -344,6 +344,7 @@
   {
    "allow_on_submit": 1,
    "default": "0",
+   "depends_on": "eval: doc.docstatus",
    "fieldname": "external_office_check",
    "fieldtype": "Check",
    "label": "External Office"
@@ -353,7 +354,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2021-04-05 22:06:05.536723",
+ "modified": "2021-04-07 20:54:43.958638",
  "modified_by": "Administrator",
  "module": "Recruitment Plus",
  "name": "CV",
