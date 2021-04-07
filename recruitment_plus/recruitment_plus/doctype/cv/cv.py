@@ -41,12 +41,12 @@ class CV(Document):
 	def generate_visa(self):
 		obj = {
 			"doctype": "Visa",
-			"service_type": self.service_type,
-			"religion": self.religion,
-			"nationality": self.nationality,
-			"external_office": self.external_office,
-			"from_age": self.age,
-			"to_age": self.age,
+			"service_type": self.service_type or "",
+			"religion": self.religion or "",
+			"nationality": self.nationality or "",
+			"external_office": self.external_office or "",
+			"from_age": self.age or 0,
+			"to_age": self.age or 0,
 			"cv": self.name,
 		}
 		visa = frappe.get_doc(obj).insert()

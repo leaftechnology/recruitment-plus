@@ -215,9 +215,9 @@ cur_frm.cscript.refresh = function () {
                             frappe.set_route("Form", "Visa", rr.message);
                         }
                     })
-            })
+            }, "Create")
     }
-    if(cur_frm.doc.status === "In Progress" && cur_frm.doc.own_recruitment && !existing_rental){
+    if((cur_frm.doc.own_recruitment && !existing_rental) || (cur_frm.doc.external_office && !existing_rental)){
        cur_frm.add_custom_button(__("Rental"), () => {
                     cur_frm.call({
                         doc: cur_frm.doc,
@@ -229,9 +229,9 @@ cur_frm.cscript.refresh = function () {
                                 frappe.set_route("Form", "Rental", rr.message);
                              }
                     })
-            })
+            }, "Create")
     }
-     if(submitted_visa && !existing_si && !cur_frm.doc.own_recruitment && !cur_frm.doc.external_office){
+     if((submitted_visa && !existing_si && !cur_frm.doc.own_recruitment && !cur_frm.doc.external_office) || (cur_frm.doc.external_office && !existing_si)){
        cur_frm.add_custom_button(__("Sales Invoice"), () => {
                     cur_frm.call({
                         doc: cur_frm.doc,
@@ -244,7 +244,7 @@ cur_frm.cscript.refresh = function () {
 
            }
                     })
-            })
+            }, "Create")
     }
 
     if((existing_si && !existing_pi && cur_frm.doc.external_office) || (existing_rental && !existing_pi && cur_frm.doc.external_office)){
@@ -261,7 +261,7 @@ cur_frm.cscript.refresh = function () {
 
            }
                     })
-            })
+            }, "Create")
     }
     if(cur_frm.doc.status === "Sent to Outside"){
        cur_frm.add_custom_button(__("Ticket"), () => {
@@ -277,7 +277,7 @@ cur_frm.cscript.refresh = function () {
                             cur_frm.reload_doc()
                         }
                 })
-            })
+            }, "Create")
     }
     if(cur_frm.doc.status === "Ticket"){
        cur_frm.add_custom_button(__("Arravel"), () => {
@@ -294,7 +294,7 @@ cur_frm.cscript.refresh = function () {
 
                         }
                 })
-            })
+            }, "Create")
     }
     if(cur_frm.doc.status === "Arravel"){
        cur_frm.add_custom_button(__("Completed"), () => {
@@ -311,7 +311,7 @@ cur_frm.cscript.refresh = function () {
 
                         }
                 })
-            })
+            }, "Create")
     }
     if(['Ticket', 'Arravel', 'Completed'].includes(cur_frm.doc.status)){
         cur_frm.set_df_property("external_office", "read_only", 1)
