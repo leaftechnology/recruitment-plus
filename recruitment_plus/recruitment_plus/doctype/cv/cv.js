@@ -219,7 +219,9 @@ cur_frm.cscript.refresh = function () {
     }
     if((cur_frm.doc.own_recruitment && !existing_rental) || (cur_frm.doc.external_office && !existing_rental)){
        cur_frm.add_custom_button(__("Rental"), () => {
-                    cur_frm.call({
+           frappe.confirm('Are you sure you want to proceed?',
+                () => {
+                   cur_frm.call({
                         doc: cur_frm.doc,
                         method: 'generate_rental',
                         args: {},
@@ -229,11 +231,16 @@ cur_frm.cscript.refresh = function () {
                                 frappe.set_route("Form", "Rental", rr.message);
                              }
                     })
+                },
+                () => {})
+
             }, "Create")
     }
      if((submitted_visa && !existing_si && !cur_frm.doc.own_recruitment && !cur_frm.doc.external_office) || (cur_frm.doc.external_office && !existing_si)){
        cur_frm.add_custom_button(__("Sales Invoice"), () => {
-                    cur_frm.call({
+           frappe.confirm('Are you sure you want to proceed?',
+                () => {
+                  cur_frm.call({
                         doc: cur_frm.doc,
                         method: 'generate_si',
                         args: {},
@@ -242,15 +249,20 @@ cur_frm.cscript.refresh = function () {
                         callback: (rr) => {
                                     frappe.set_route("Form", "Sales Invoice", rr.message);
 
-           }
+                        }
                     })
+                },
+                () => {})
+
             }, "Create")
     }
 
     if((existing_si && !existing_pi && cur_frm.doc.external_office) || (existing_rental && !existing_pi && cur_frm.doc.external_office)){
 
        cur_frm.add_custom_button(__("Purchase Invoice"), () => {
-                    cur_frm.call({
+           frappe.confirm('Are you sure you want to proceed?',
+                () => {
+                  cur_frm.call({
                         doc: cur_frm.doc,
                         method: 'generate_pi',
                         args: {},
@@ -259,13 +271,18 @@ cur_frm.cscript.refresh = function () {
                         callback: (rr) => {
                                     frappe.set_route("Form", "Purchase Invoice", rr.message);
 
-           }
+                         }
                     })
+                },
+                () => {})
+
             }, "Create")
     }
     if(cur_frm.doc.status === "Sent to Outside"){
        cur_frm.add_custom_button(__("Ticket"), () => {
-                    cur_frm.call({
+           frappe.confirm('Are you sure you want to proceed?',
+                () => {
+                  cur_frm.call({
                         doc: cur_frm.doc,
                         method: 'change_status',
                         args: {
@@ -277,11 +294,16 @@ cur_frm.cscript.refresh = function () {
                             cur_frm.reload_doc()
                         }
                 })
+                },
+                () => {})
+
             }, "Create")
     }
     if(cur_frm.doc.status === "Ticket"){
        cur_frm.add_custom_button(__("Arravel"), () => {
-                    cur_frm.call({
+           frappe.confirm('Are you sure you want to proceed?',
+                () => {
+                  cur_frm.call({
                         doc: cur_frm.doc,
                         method: 'change_status',
                         args: {
@@ -294,11 +316,16 @@ cur_frm.cscript.refresh = function () {
 
                         }
                 })
+                },
+                () => {})
+
             }, "Create")
     }
     if(cur_frm.doc.status === "Arravel"){
        cur_frm.add_custom_button(__("Completed"), () => {
-                    cur_frm.call({
+           frappe.confirm('Are you sure you want to proceed?',
+                () => {
+                   cur_frm.call({
                         doc: cur_frm.doc,
                         method: 'change_status',
                         args: {
@@ -311,6 +338,9 @@ cur_frm.cscript.refresh = function () {
 
                         }
                 })
+                },
+                () => {})
+
             }, "Create")
     }
     if(['Ticket', 'Arravel', 'Completed'].includes(cur_frm.doc.status)){
