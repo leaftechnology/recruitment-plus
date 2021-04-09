@@ -162,11 +162,11 @@ cur_frm.cscript.refresh = function () {
           });
         })
    add_location(cur_frm)
-    if(!cur_frm.is_new()) {
-        document.querySelectorAll("[data-doctype='Visa']")[1].style.display = "none";
-        document.querySelectorAll("[data-doctype='Rental']")[1].style.display = "none";
-        document.querySelectorAll("[data-doctype='Recruitment Request']")[1].style.display = "none";
-    }
+    // if(!cur_frm.is_new()) {
+    //     document.querySelectorAll("[data-doctype='Visa']")[1].style.display = "none";
+    //     document.querySelectorAll("[data-doctype='Rental']")[1].style.display = "none";
+    //     document.querySelectorAll("[data-doctype='Recruitment Request']")[1].style.display = "none";
+    // }
     frappe.call({
         method: "recruitment_plus.recruitment_plus.doctype.cv.cv.get_submitted_visa",
         args: {
@@ -236,7 +236,7 @@ cur_frm.cscript.refresh = function () {
 
             }, "Create")
     }
-     if((submitted_visa && !existing_si && !cur_frm.doc.own_recruitment && !cur_frm.doc.external_office) || (cur_frm.doc.external_office && !existing_si)){
+     if((submitted_visa && !existing_si && !cur_frm.doc.own_recruitment && !cur_frm.doc.external_office) || (cur_frm.doc.external_office && !existing_si && !cur_frm.doc.own_recruitment)){
        cur_frm.add_custom_button(__("Sales Invoice"), () => {
            frappe.confirm('Are you sure you want to proceed?',
                 () => {
