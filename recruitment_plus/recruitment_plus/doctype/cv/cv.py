@@ -64,8 +64,8 @@ class CV(Document):
 		company = frappe.get_single("Global Defaults").__dict__
 		obj = {
 			"doctype": "Sales Invoice",
-			"customer": self.customer,
-			"customer_name": self.customer_name,
+			"customer": frappe.db.get_value("Recruitment Request", self.recruitment_request, "customer") if self.recruitment_request else self.customer,
+			"customer_name": frappe.db.get_value("Recruitment Request", self.recruitment_request, "customer_name") if self.recruitment_request else self.customer_name,
 			"due_date": frappe.utils.now_datetime().date(),
 			"items": self.get_items("Sales"),
 			"reference": self.get_visa_reference(),
