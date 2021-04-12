@@ -217,7 +217,7 @@ cur_frm.cscript.refresh = function () {
                     })
             }, "Create")
     }
-    if((cur_frm.doc.own_recruitment && !existing_rental) || (cur_frm.doc.external_office && !existing_rental)){
+    if((cur_frm.doc.own_recruitment && !existing_rental) || (cur_frm.doc.external_office_check && cur_frm.doc.external_office && !existing_rental)){
        cur_frm.add_custom_button(__("Rental"), () => {
            frappe.confirm('Are you sure you want to proceed?',
                 () => {
@@ -347,3 +347,5 @@ cur_frm.cscript.refresh = function () {
         cur_frm.set_df_property("external_office", "read_only", 1)
     }
 }
+
+

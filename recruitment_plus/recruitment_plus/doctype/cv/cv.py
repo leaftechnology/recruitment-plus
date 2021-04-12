@@ -95,6 +95,7 @@ class CV(Document):
 				"visa_reference": visa[0].name,
 				"date": visa[0].visa_date,
 				"amount": visa[0].visa_price,
+				"cv": self.name
 			}]
 		return []
 	def get_items(self, doctype):

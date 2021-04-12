@@ -238,7 +238,7 @@
   {
    "allow_on_submit": 1,
    "default": "0",
-   "depends_on": "eval: doc.docstatus == 1 && !doc.cv_for_recruitment_request",
+   "depends_on": "eval: doc.docstatus == 1 && !doc.cv_for_recruitment_request && !doc.customer",
    "fieldname": "own_recruitment",
    "fieldtype": "Check",
    "label": "Own Recruitment"
@@ -276,7 +276,7 @@
   {
    "allow_on_submit": 1,
    "default": "0",
-   "depends_on": "eval: doc.docstatus == 1 && doc.own_recruitment == 0 && (doc.status == \"Available\" || doc.status == \"In Progress\")",
+   "depends_on": "eval: doc.docstatus == 1 && doc.own_recruitment == 0 && (doc.status == \"Available\" || doc.status == \"In Progress\") && !doc.customer",
    "fieldname": "cv_for_recruitment_request",
    "fieldtype": "Check",
    "label": "CV for Recruitment Request",
@@ -327,14 +327,16 @@
    "depends_on": "eval: doc.status == \"Sent to Outside\"",
    "fieldname": "destination_airport",
    "fieldtype": "Data",
-   "label": "Destination AIrport"
+   "label": "Destination Airport",
+   "mandatory_depends_on": "eval: doc.status == \"Ticket\""
   },
   {
    "allow_on_submit": 1,
-   "depends_on": "eval: doc.status == \"Sent to Outside\"",
+   "depends_on": "eval: doc.status == \"Ticket\"",
    "fieldname": "airport_arrival",
    "fieldtype": "Data",
-   "label": "Arrival Airport"
+   "label": "Arrival Airport",
+   "mandatory_depends_on": "eval: doc.status == \"Arrival\""
   },
   {
    "allow_on_submit": 1,
@@ -356,7 +358,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2021-04-07 22:30:54.581626",
+ "modified": "2021-04-12 21:28:53.723813",
  "modified_by": "Administrator",
  "module": "Recruitment Plus",
  "name": "CV",

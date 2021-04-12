@@ -32,7 +32,7 @@ frappe.ui.form.on('Rental', {
             document.querySelectorAll("[data-doctype='Additional Salary']")[1].style.display = "none";
             document.querySelectorAll("[data-doctype='Sales Invoice']")[1].style.display = "none";
         }
-        if(cur_frm.doc.status && !cur_frm.doc.sales_invoice){
+        if(cur_frm.doc.docstatus && !cur_frm.doc.sales_invoice){
             cur_frm.add_custom_button(__("Sales Invoice"), () => {
                     cur_frm.call({
                         doc: cur_frm.doc,
@@ -44,10 +44,10 @@ frappe.ui.form.on('Rental', {
                             frappe.set_route("Form", "Sales Invoice", rr.message);
                         }
                     })
-            })
+            }, "Create")
         }
         if(cur_frm.doc.docstatus && !cur_frm.doc.salary_based && !cur_frm.doc.journal_entry){
-	        cur_frm.add_custom_button(__("Rental JV"), () => {
+	        cur_frm.add_custom_button(__("JV"), () => {
                     cur_frm.call({
                         doc: cur_frm.doc,
                         method: 'generate_rental_jv',
@@ -58,7 +58,7 @@ frappe.ui.form.on('Rental', {
                             frappe.set_route("Form", "Journal Entry", rr.message);
                         }
                     })
-            })
+            }, "Create")
         }
         if(cur_frm.doc.docstatus && cur_frm.doc.salary_based && !cur_frm.doc.additional_salary){
 	        cur_frm.add_custom_button(__("Additional Salary"), () => {
@@ -73,7 +73,7 @@ frappe.ui.form.on('Rental', {
 
                         }
                     })
-            })
+            }, "Create")
         }
         if(cur_frm.doc.status === "To Pick Up"){
             cur_frm.add_custom_button(__("Pick Up"), () => {
@@ -88,7 +88,7 @@ frappe.ui.form.on('Rental', {
 
                         }
                     })
-            })
+            }, "Create")
         } else if(cur_frm.doc.status === "To Return"){
             cur_frm.add_custom_button(__("Rental Return"), () => {
                     cur_frm.call({
@@ -102,7 +102,7 @@ frappe.ui.form.on('Rental', {
 
                         }
                     })
-            })
+            }, "Create")
         }
 	}
 });
